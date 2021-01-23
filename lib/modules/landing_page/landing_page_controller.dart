@@ -11,7 +11,7 @@ abstract class LandingPageControllerBase with Store, ChangeNotifier {
   LandingPageControllerBase(this.context);
 
   initLogic(context) async {
-    await Future.delayed(Duration(seconds: 5));
+    await Future.delayed(Duration(seconds: 1));
     Navigator.popAndPushNamed(context, '/login-page');
 
     // SharedPreferences prefs = await SharedPreferences.getInstance();

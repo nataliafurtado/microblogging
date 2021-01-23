@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:microblogging/assets/style.dart';
 import 'package:microblogging/modules/login/teddy/widgets/input_helper.dart';
 
 typedef void CaretMoved(Offset globalCaretPosition);
@@ -60,14 +61,12 @@ class _TrackingTextInputState extends State<TrackingTextInput> {
     return Padding(
       padding: const EdgeInsets.only(bottom: 20.0),
       child: TextFormField(
-          decoration: InputDecoration(
-            hintText: widget.hint,
-            labelText: widget.label,
-          ),
-          key: _fieldKey,
-          controller: _textController,
-          obscureText: widget.isObscured,
-          validator: (value) {}),
+        decoration:
+            Style.inputDecoration(hint: widget.hint, label: widget.label),
+        key: _fieldKey,
+        controller: _textController,
+        obscureText: widget.isObscured,
+      ),
     );
   }
 }

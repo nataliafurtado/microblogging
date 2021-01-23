@@ -24,6 +24,21 @@ mixin _$ListOfPostsController on ListOfPostsControllerBase, Store {
     });
   }
 
+  final _$imageStringAtom = Atom(name: 'ListOfPostsControllerBase.imageString');
+
+  @override
+  String get imageString {
+    _$imageStringAtom.reportRead();
+    return super.imageString;
+  }
+
+  @override
+  set imageString(String value) {
+    _$imageStringAtom.reportWrite(value, super.imageString, () {
+      super.imageString = value;
+    });
+  }
+
   final _$fetchPostsAsyncAction =
       AsyncAction('ListOfPostsControllerBase.fetchPosts');
 
@@ -41,12 +56,28 @@ mixin _$ListOfPostsController on ListOfPostsControllerBase, Store {
         .run(() => super.goToEditPostPage(index));
   }
 
-  final _$savePostAsyncAction =
-      AsyncAction('ListOfPostsControllerBase.savePost');
+  final _$saveEditPostAsyncAction =
+      AsyncAction('ListOfPostsControllerBase.saveEditPost');
 
   @override
   Future saveEditPost() {
-    return _$savePostAsyncAction.run(() => super.saveEditPost());
+    return _$saveEditPostAsyncAction.run(() => super.saveEditPost());
+  }
+
+  final _$imgFromCameraAsyncAction =
+      AsyncAction('ListOfPostsControllerBase.imgFromCamera');
+
+  @override
+  Future imgFromCamera() {
+    return _$imgFromCameraAsyncAction.run(() => super.imgFromCamera());
+  }
+
+  final _$imgFromGalleryAsyncAction =
+      AsyncAction('ListOfPostsControllerBase.imgFromGallery');
+
+  @override
+  Future imgFromGallery() {
+    return _$imgFromGalleryAsyncAction.run(() => super.imgFromGallery());
   }
 
   final _$deletePostAsyncAction =
@@ -61,12 +92,11 @@ mixin _$ListOfPostsController on ListOfPostsControllerBase, Store {
       ActionController(name: 'ListOfPostsControllerBase');
 
   @override
-  dynamic changeShowResponsableInCard() {
-    final _$actionInfo =
-        _$ListOfPostsControllerBaseActionController.startAction(
-            name: 'ListOfPostsControllerBase.changeShowResponsableInCard');
+  dynamic deleteImage() {
+    final _$actionInfo = _$ListOfPostsControllerBaseActionController
+        .startAction(name: 'ListOfPostsControllerBase.deleteImage');
     try {
-      return super.changeShowResponsableInCard();
+      return super.deleteImage();
     } finally {
       _$ListOfPostsControllerBaseActionController.endAction(_$actionInfo);
     }
@@ -75,7 +105,8 @@ mixin _$ListOfPostsController on ListOfPostsControllerBase, Store {
   @override
   String toString() {
     return '''
-posts: ${posts}
+posts: ${posts},
+imageString: ${imageString}
     ''';
   }
 }

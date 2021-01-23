@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:http/http.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:mobx/mobx.dart';
 
 import '../../functions/functions.dart';
@@ -24,6 +24,8 @@ abstract class ListOfPostsControllerBase with Store, ChangeNotifier {
   TextEditingController controllerText = TextEditingController();
   int indexToEdit;
   String data;
+  @observable
+  String imageString;
 
   @action
   fetchPosts() async {
@@ -36,6 +38,8 @@ abstract class ListOfPostsControllerBase with Store, ChangeNotifier {
   goToEditPostPage(int index) async {
     data = DateTime.now().toIso8601String();
     controllerText.text = posts[index].text;
+    imageString = posts[index].image;
+
     indexToEdit = index;
     Navigator.pushNamed(context, '/edit-create-post', arguments: this);
   }
@@ -43,6 +47,7 @@ abstract class ListOfPostsControllerBase with Store, ChangeNotifier {
   goToNewPostPage() async {
     data = DateTime.now().toIso8601String();
     indexToEdit = null;
+    imageString = null;
     controllerText.text = "";
     Navigator.pushNamed(context, '/edit-create-post', arguments: this);
   }
@@ -51,6 +56,7 @@ abstract class ListOfPostsControllerBase with Store, ChangeNotifier {
   saveEditPost() async {
     if (indexToEdit != null) {
       posts[indexToEdit].text = controllerText.text;
+      posts[indexToEdit].image = imageString ?? "";
     } else {
       await saveNewPost();
     }
@@ -62,18 +68,35 @@ abstract class ListOfPostsControllerBase with Store, ChangeNotifier {
       date: data,
       text: controllerText.text,
       who: "tttttt",
+      image: imageString ?? "",
     ));
   }
 
   @action
-  deletePost(int index) async {
-    showCustomDialog(DialogCircularProgressIndicator());
-    posts.removeAt(index);
-    Navigator.pop(context);
+  imgFromCamera() async {
+    final pickedFile = await ImagePicker().getImage(
+      source: ImageSource.camera,
+    );
+    if (pickedFile != null) imageString = pickedFile.path;
   }
 
   @action
-  changeShowResponsableInCard() {
-    // isToShowResponsable = !isToShowResponsable;
+  imgFromGallery() async {
+    final pickedFile = await ImagePicker().getImage(
+      source: ImageSource.gallery,
+    );
+    if (pickedFile != null) imageString = pickedFile.path;
+  }
+
+  @action
+  deleteImage() {
+    imageString = null;
+  }
+
+  @action
+  deletePost(int index) async {
+    List<Post> listPostsAux = posts;
+    listPostsAux.removeAt(index);
+    posts = listPostsAux;
   }
 }

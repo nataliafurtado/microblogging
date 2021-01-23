@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
-import 'package:microblogging/assets/style.dart';
-import 'package:microblogging/models/latest_news.dart';
-import 'package:microblogging/widgets/title_widget.dart';
 import 'package:provider/provider.dart';
 
+import '../../models/latest_news.dart';
+import '../../widgets/title_widget.dart';
 import 'latest_news.controller.dart';
 
 class LatestNewsPage extends StatelessWidget {

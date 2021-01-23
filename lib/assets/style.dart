@@ -3,13 +3,15 @@ import 'package:flutter/painting.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class Style {
+  // DECORATION
+
   static BoxDecoration get cardDecoration => BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.all(Radius.circular(10)),
         boxShadow: [
           BoxShadow(
             color: Colors.grey.withOpacity(0.5),
-            offset: Offset(0.0, 2.0),
+            offset: Offset(0.0, 1.0),
             blurRadius: 1.0,
           ),
         ],
@@ -27,25 +29,11 @@ class Style {
         ],
       );
 
-  static Color get iceBackground => const Color(0XFFF7F8FC);
-
-  static TextStyle get bold => TextStyle(fontWeight: FontWeight.bold);
-
-  static TextStyle get white => TextStyle(
-        fontWeight: FontWeight.bold,
-        letterSpacing: 1,
-        color: Colors.white,
-      );
-
-  static TextStyle get titleFont => GoogleFonts.pacifico(
-        fontSize: 20,
-        letterSpacing: 0.7,
-      );
-
-  static InputDecoration inputDecoration({String hint}) {
+  static InputDecoration inputDecoration({String hint, String label}) {
     return InputDecoration(
       errorText: null,
       hintText: hint,
+      labelText: label,
       errorBorder: OutlineInputBorder(
         borderSide: BorderSide(
           color: Colors.red,
@@ -69,13 +57,18 @@ class Style {
     );
   }
 
-  static Color get primaryColor => Colors.indigo;
-  static Color get secondaryColor => Colors.lightGreen;
+  // TEXTSTYLE
 
-  static Color get menuBackground => Color.fromRGBO(220, 224, 230, 1);
-  static Color get detailColor => const Color(0XFFDCE0E6);
-  static Color get detailDarkColor => const Color(0XFF828A99);
-  static Color get detailDarkestColor => const Color(0XFF363E4D);
+  static TextStyle get white => TextStyle(
+        fontWeight: FontWeight.bold,
+        letterSpacing: 1,
+        color: Colors.white,
+      );
+
+  static TextStyle get titleFont => GoogleFonts.pacifico(
+        fontSize: 20,
+        letterSpacing: 0.7,
+      );
 
   static TextStyle get cardTitle => TextStyle(
         fontWeight: FontWeight.bold,
@@ -86,12 +79,23 @@ class Style {
         color: Style.detailDarkColor,
       );
 
+  static TextStyle get cardText => TextStyle(
+        color: Style.detailDarkestColor,
+      );
+
   static TextStyle get formSubTitle => TextStyle(
         fontWeight: FontWeight.bold,
         color: Style.detailDarkColor,
       );
 
-  static TextStyle get cardText => TextStyle(
-        color: Style.detailDarkestColor,
-      );
+  // COLORS
+
+  static Color get primaryColor => Colors.indigo;
+  static Color get secondaryColor => Colors.lightGreen;
+
+  static Color get menuBackground => Color.fromRGBO(220, 224, 230, 1);
+  static Color get detailColor => const Color(0XFFDCE0E6);
+  static Color get detailDarkColor => const Color(0XFF828A99);
+  static Color get detailDarkestColor => const Color(0XFF363E4D);
+  static Color get iceBackground => const Color(0XFFF7F8FC);
 }

@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
-import 'package:microblogging/assets/constants.dart';
-import 'package:microblogging/modules/list_of_posts/widget/trash_background.dart';
 import 'package:provider/provider.dart';
 
+import '../../assets/constants.dart';
 import '../../assets/style.dart';
 import '../../widgets/button.dart';
 import '../../widgets/title_widget.dart';
 import 'list_of_posts_controller.dart';
-import 'widget/card.dart';
+import 'widget/post_card_widget/post_card_widget.dart';
+import 'widget/trash_background.dart';
 
 class ListOfPostsPage extends StatefulWidget {
   @override
@@ -33,8 +33,11 @@ class _ListOfPostsPageState extends State<ListOfPostsPage> {
       return Column(
         children: [
           Container(height: 40),
-          TitleWidget(
-            Constants.microblogging,
+          Hero(
+            tag: "title",
+            child: TitleWidget(
+              Constants.microblogging,
+            ),
           ),
           Expanded(
             child: ListView.builder(
@@ -45,7 +48,8 @@ class _ListOfPostsPageState extends State<ListOfPostsPage> {
                       dismissThresholds: {DismissDirection.endToStart: 0.9},
                       background: TrashBackground(),
                       direction: DismissDirection.endToStart,
-                      key: Key(index.toString()),
+                      key: Key(controllerListOfPosts.posts[index].text +
+                          index.toString()),
                       onDismissed: (direction) {
                         controllerListOfPosts.deletePost(index);
                       },
@@ -55,7 +59,9 @@ class _ListOfPostsPageState extends State<ListOfPostsPage> {
                       movementDuration: Duration(seconds: 1));
                 }),
           ),
-          Container(height: 30),
+          Container(
+            height: Constants.padding,
+          ),
         ],
       );
     });

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
-import 'package:microblogging/assets/style.dart';
-import 'package:microblogging/modules/list_of_posts/list_of_posts_controller.dart';
 import 'package:provider/provider.dart';
 
+import '../../assets/style.dart';
 import '../latest_news/latest_news_page.dart';
+import '../list_of_posts/list_of_posts_controller.dart';
 import '../list_of_posts/list_of_posts_page.dart';
 import 'home_controller.dart';
 import 'home_tabs.dart';
@@ -32,6 +32,7 @@ class _HomePageState extends State<HomePage>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Style.iceBackground,
       bottomNavigationBar: HomeTabs(),
       body: TabBarView(controller: controllerHome.tabController, children: [
         ListOfPostsPage(),

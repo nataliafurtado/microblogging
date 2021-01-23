@@ -9,6 +9,8 @@ abstract class LoginControllerBase with Store, ChangeNotifier {
   final BuildContext context;
   LoginControllerBase(this.context);
 
+  TextEditingController loginCOntroller = TextEditingController();
+
   login() {
 // salvar no global
 
