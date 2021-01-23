@@ -6,8 +6,12 @@ class ChipsFilter extends StatefulWidget {
   final String textSelected;
   final Function onClick;
   final double width;
-  const ChipsFilter(
-      {this.textDefault, this.textSelected, this.onClick, this.width});
+  const ChipsFilter({
+    this.textDefault,
+    this.textSelected,
+    this.onClick,
+    this.width,
+  });
   @override
   _ChipsFilterState createState() => _ChipsFilterState();
 }

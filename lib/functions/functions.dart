@@ -1,35 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/painting.dart';
 import 'package:intl/intl.dart';
-import 'package:microblogging/assets/style.dart';
 
-import '../assets/constants.dart';
 import '../services/navigator_sergice.dart';
-
-Color statusColors(String status) {
-  if (Constants.emProgresso == status.toUpperCase()) {
-    return Style.emProgresso;
-  } else if (Constants.atrasada == status.toUpperCase()) {
-    return Style.atrasada;
-  } else if (Constants.emEspera == status.toUpperCase()) {
-    return Style.emEspera;
-  } else if (Constants.cancelada == status.toUpperCase()) {
-    return Style.cancelada;
-  } else if (Constants.completa == status.toUpperCase()) {
-    return Style.completa;
-  }
-  return Colors.white;
-}
-
-Color prazoColors(DateTime date) {
-  if (date.isBefore(DateTime.now())) {
-    return Style.atrasada;
-  } else if (date.isAfter(DateTime.now())) {
-    return Style.completa;
-  } else {
-    return Style.atrasada;
-  }
-}
 
 double flexHeightSpacing(BuildContext context, double value) {
   return MediaQuery.of(context).size.height * value;
@@ -39,13 +11,9 @@ double flexWidthSpacing(BuildContext context, double value) {
   return MediaQuery.of(context).size.width * value;
 }
 
-String formatData(String datePassed, bool returnSemPrazo) {
-  if (datePassed.isNotEmpty) {
-    DateTime brazilianDate = DateTime.parse(datePassed);
-    return DateFormat('dd/MM/yyyy').format(brazilianDate);
-  } else {
-    return returnSemPrazo ? "Sem prazo" : "";
-  }
+String convertDate(String datePassed) {
+  DateTime brazilianDate = DateTime.parse(datePassed);
+  return DateFormat('dd/MM/yyyy HH:mm').format(brazilianDate);
 }
 
 void showCustomDialog(Widget dialog) {

@@ -8,4 +8,10 @@ class LoginController = LoginControllerBase with _$LoginController;
 abstract class LoginControllerBase with Store, ChangeNotifier {
   final BuildContext context;
   LoginControllerBase(this.context);
+
+  login() {
+// salvar no global
+
+    Navigator.popAndPushNamed(context, '/home-page');
+  }
 }

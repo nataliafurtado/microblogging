@@ -7,7 +7,6 @@ class Style {
         borderRadius: BorderRadius.all(Radius.circular(10)),
         boxShadow: [
           BoxShadow(
-            // color: Colors.grey.shade400,
             color: Colors.grey.withOpacity(0.5),
             offset: Offset(0.0, 2.0),
             blurRadius: 1.0,
@@ -36,6 +35,12 @@ class Style {
         letterSpacing: 1,
         color: Colors.white,
       );
+
+  static TextStyle get titleFont => TextStyle(
+      fontSize: 20,
+      fontWeight: FontWeight.bold,
+      color: detailDarkColor,
+      letterSpacing: 1);
 
   static InputDecoration inputDecoration({String hint}) {
     return InputDecoration(
@@ -67,9 +72,26 @@ class Style {
   static Color get primaryColor => Colors.indigo;
   static Color get secondaryColor => Colors.lightGreen;
 
-  static Color get atrasada => Colors.redAccent[400];
-  static Color get emEspera => Color(0XFFd9d9d9);
-  static Color get cancelada => Color(0XFFefefef);
-  static Color get completa => Colors.greenAccent;
-  static Color get emProgresso => Colors.yellow[600];
+  static Color get menuBackground => Color.fromRGBO(220, 224, 230, 1);
+  static Color get detailColor => const Color(0XFFDCE0E6);
+  static Color get detailDarkColor => const Color(0XFF828A99);
+  static Color get detailDarkestColor => const Color(0XFF363E4D);
+
+  static TextStyle get cardTitle => TextStyle(
+        fontWeight: FontWeight.bold,
+        color: Style.detailDarkestColor,
+      );
+
+  static TextStyle get cardSubTitle => TextStyle(
+        color: Style.detailDarkColor,
+      );
+
+  static TextStyle get formSubTitle => TextStyle(
+        fontWeight: FontWeight.bold,
+        color: Style.detailDarkColor,
+      );
+
+  static TextStyle get cardText => TextStyle(
+        color: Style.detailDarkestColor,
+      );
 }

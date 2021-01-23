@@ -1,5 +1,6 @@
 import 'package:flare_flutter/flare_actor.dart';
 import 'package:flutter/material.dart';
+import 'package:microblogging/modules/login/login_controller.dart';
 import 'package:microblogging/modules/login/teddy/teddy_controller.dart';
 import 'package:microblogging/modules/login/teddy/widgets/tracking_text_input.dart';
 import 'package:microblogging/widgets/button.dart';
@@ -12,6 +13,8 @@ class LoginPage extends StatelessWidget {
   Widget build(BuildContext context) {
     TeddyController _controllerTedyy =
         Provider.of<TeddyController>(context, listen: false);
+    LoginController _loginController =
+        Provider.of<LoginController>(context, listen: false);
     return Scaffold(
       body: SingleChildScrollView(
         child: Container(
@@ -60,7 +63,11 @@ class LoginPage extends StatelessWidget {
                           },
                         ),
                         Button("Entrar", () {
-                          _controllerTedyy.submitPassword();
+                          //
+                          //
+                          //
+                          _loginController.login();
+                          // _controllerTedyy.submitPassword();
                         }),
                       ],
                     )),

@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:microblogging/modules/login/login_provider.dart';
 import 'package:provider/provider.dart';
 
 import 'modules/landing_page/landing_page.dart';
 import 'modules/landing_page/landing_page_provider.dart';
-import 'modules/list/list_controller.dart';
-import 'modules/list/list_page_action_event.dart';
-import 'modules/list/list_provider.dart';
+import 'modules/list_of_posts/list_of_posts_controller.dart';
+import 'modules/list_of_posts/list_of_posts_page_edit_create.dart';
+import 'modules/home/home_provider.dart';
+import 'modules/login/login_provider.dart';
 
 class RouteGenerator {
   // ignore: missing_return
@@ -17,19 +17,19 @@ class RouteGenerator {
       case '/':
         return MaterialPageRoute(builder: (_) => LandingPageProvider());
 
-      case '/list-page':
-        return MaterialPageRoute(builder: (_) => ListProvider());
+      case '/home-page':
+        return MaterialPageRoute(builder: (_) => HomeProvider());
 
       case '/login-page':
         return MaterialPageRoute(builder: (_) => LoginProvider());
 
-      case '/action-event-page':
-        if (args is ListController) {
+      case '/edit-create-post':
+        if (args is ListOfPostsController) {
           return MaterialPageRoute(
             builder: (context) {
-              return ChangeNotifierProvider<ListController>.value(
+              return ChangeNotifierProvider<ListOfPostsController>.value(
                 value: args,
-                child: ActionEventPage(),
+                child: EditCreatePostPage(),
               );
             },
           );

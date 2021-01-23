@@ -31,8 +31,8 @@ dependencies:
   flutter_mobx: ^1.1.0+2
   shared_preferences: ^0.5.12+2
   flutter_launcher_icons: ^0.8.1
-  # flutter_slidable: ^0.5.7
   flare_flutter: ^2.0.6
+  font_awesome_flutter: ^8.11.0
 
 
   # The following adds the Cupertino Icons font to your application.
@@ -43,8 +43,8 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   build_runner: ^1.10.0
-  mobx_codegen: ^1.1.0+1
-  google_sign_in: ^4.5.6    
+  mobx_codegen: ^1.1.0+1    
+  mockito: 
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
@@ -61,6 +61,7 @@ flutter:
   assets:
     - lib/assets/images/
     - lib/assets/Teddy.flr
+    - lib/mocks/list_of_posts.json
 
   #   - images/a_dot_ham.jpeg
 
