@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:microblogging/assets/constants.dart';
 import 'package:microblogging/modules/list_of_posts/widget/trash_background.dart';
 import 'package:provider/provider.dart';
 
@@ -32,7 +33,9 @@ class _ListOfPostsPageState extends State<ListOfPostsPage> {
       return Column(
         children: [
           Container(height: 40),
-          TitleWidget("Posts"),
+          TitleWidget(
+            Constants.microblogging,
+          ),
           Expanded(
             child: ListView.builder(
                 padding: EdgeInsets.zero,

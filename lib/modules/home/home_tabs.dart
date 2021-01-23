@@ -27,6 +27,7 @@ class HomeTabs extends StatelessWidget {
             child: Container(
                 child: FaIcon(
               FontAwesomeIcons.bullhorn,
+              size: 20,
               color: controllerHome.currentTabBar == 1
                   ? Style.primaryColor
                   : Style.menuBackground,

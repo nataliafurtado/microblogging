@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class Style {
   static BoxDecoration get cardDecoration => BoxDecoration(
@@ -36,11 +37,10 @@ class Style {
         color: Colors.white,
       );
 
-  static TextStyle get titleFont => TextStyle(
-      fontSize: 20,
-      fontWeight: FontWeight.bold,
-      color: detailDarkColor,
-      letterSpacing: 1);
+  static TextStyle get titleFont => GoogleFonts.pacifico(
+        fontSize: 20,
+        letterSpacing: 0.7,
+      );
 
   static InputDecoration inputDecoration({String hint}) {
     return InputDecoration(
