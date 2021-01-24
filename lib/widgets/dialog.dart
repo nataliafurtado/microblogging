@@ -1,18 +1,30 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:microblogging/assets/style.dart';
 
-class DialogTeste extends StatelessWidget {
-  final String teste;
-  const DialogTeste({
-    this.teste,
-  });
+class DialogWarn extends StatelessWidget {
+  final String text;
+  const DialogWarn(
+    this.text,
+  );
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      content: Container(
-        child: Center(
-          child: Text(teste),
+        content: Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Container(
+          child: FaIcon(
+            FontAwesomeIcons.microblog,
+            color: Style.secondaryColor,
+            size: 60,
+          ),
         ),
-      ),
-    );
+        Container(height: 50),
+        Container(
+          child: Text(text),
+        ),
+      ],
+    ));
   }
 }

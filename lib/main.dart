@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
 import 'global_acess.dart';
@@ -23,6 +24,9 @@ class MyApp extends StatelessWidget {
           theme: ThemeData(
             primarySwatch: Colors.purple,
             visualDensity: VisualDensity.adaptivePlatformDensity,
+            textTheme: GoogleFonts.openSansTextTheme(
+              Theme.of(context).textTheme,
+            ),
           ),
         ));
   }

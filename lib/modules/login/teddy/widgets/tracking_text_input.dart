@@ -8,18 +8,33 @@ import 'package:microblogging/modules/login/teddy/widgets/input_helper.dart';
 typedef void CaretMoved(Offset globalCaretPosition);
 typedef void TextChanged(String text);
 
+/*
+
+    O Teddy foi pego pronto na internet.
+    Essa classe foi pega pronta da internet.
+
+
+
+*/
+
 // Helper widget to track caret position.
 class TrackingTextInput extends StatefulWidget {
   TrackingTextInput(
       {Key key,
       this.onCaretMoved,
       this.onTextChanged,
+      this.onFocusChange,
+      this.validator,
+      this.textController,
       this.hint,
       this.label,
       this.isObscured = false})
       : super(key: key);
   final CaretMoved onCaretMoved;
   final TextChanged onTextChanged;
+  final Function onFocusChange;
+  final Function validator;
+  final TextEditingController textController;
   final String hint;
   final String label;
   final bool isObscured;
@@ -29,11 +44,11 @@ class TrackingTextInput extends StatefulWidget {
 
 class _TrackingTextInputState extends State<TrackingTextInput> {
   final GlobalKey _fieldKey = GlobalKey();
-  final TextEditingController _textController = TextEditingController();
+  // final TextEditingController widget.textController = TextEditingController();
   Timer _debounceTimer;
   @override
   initState() {
-    _textController.addListener(() {
+    widget.textController.addListener(() {
       // We debounce the listener as sometimes the caret position is updated after the listener
       // this assures us we get an accurate caret position.
       if (_debounceTimer?.isActive ?? false) _debounceTimer.cancel();
@@ -50,7 +65,7 @@ class _TrackingTextInputState extends State<TrackingTextInput> {
         }
       });
       if (widget.onTextChanged != null) {
-        widget.onTextChanged(_textController.text);
+        widget.onTextChanged(widget.textController.text);
       }
     });
     super.initState();
@@ -60,12 +75,16 @@ class _TrackingTextInputState extends State<TrackingTextInput> {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(bottom: 20.0),
-      child: TextFormField(
-        decoration:
-            Style.inputDecoration(hint: widget.hint, label: widget.label),
-        key: _fieldKey,
-        controller: _textController,
-        obscureText: widget.isObscured,
+      child: Focus(
+        onFocusChange: widget.onFocusChange,
+        child: TextFormField(
+          decoration:
+              Style.inputDecoration(hint: widget.hint, label: widget.label),
+          key: _fieldKey,
+          controller: widget.textController,
+          obscureText: widget.isObscured,
+          validator: widget.validator,
+        ),
       ),
     );
   }

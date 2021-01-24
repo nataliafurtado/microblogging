@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:microblogging/modules/login/login_controller.dart';
+import 'package:microblogging/modules/login/login_page_new_user.dart';
+import 'package:microblogging/modules/login/widgets/login_new_user.dart';
 import 'package:provider/provider.dart';
 
 import 'modules/landing_page/landing_page.dart';
@@ -22,6 +25,19 @@ class RouteGenerator {
 
       case '/login-page':
         return MaterialPageRoute(builder: (_) => LoginProvider());
+
+      case '/login-new-user':
+        if (args is LoginController) {
+          return MaterialPageRoute(
+            builder: (context) {
+              return ChangeNotifierProvider<LoginController>.value(
+                value: args,
+                child: LoginNewUserPage(),
+              );
+            },
+          );
+        }
+        break;
 
       case '/edit-create-post':
         if (args is ListOfPostsController) {

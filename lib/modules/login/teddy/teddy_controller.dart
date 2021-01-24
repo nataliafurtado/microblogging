@@ -143,13 +143,11 @@ abstract class TeddyControllerBase extends FlareControls
     }
   }
 
-  void submitPassword() {
-    print(_password);
-    // play("hands_down");
+  void succes() {
     play("success");
-    // if (_password == "bears") {
-    // } else {
-    // play("fail");
-    // }
+  }
+
+  void fails() {
+    play("fail");
   }
 }

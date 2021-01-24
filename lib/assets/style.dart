@@ -33,6 +33,8 @@ class Style {
     return InputDecoration(
       errorText: null,
       hintText: hint,
+      hintStyle: cardSubTitle.copyWith(fontWeight: FontWeight.bold),
+      labelStyle: cardSubTitle.copyWith(fontWeight: FontWeight.bold),
       labelText: label,
       errorBorder: OutlineInputBorder(
         borderSide: BorderSide(

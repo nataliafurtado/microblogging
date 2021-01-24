@@ -1,18 +1,18 @@
 [
     {
-        "who": "Natalia Furtado ",
+        "who": "Natalia Furtado",
         "date": "2020-02-02T16:00:00Z",
         "text": "Partiu academia !",
-        "image": "lib/assets/images/airplane.png"
+        "image": "lib/assets/images/selfie.jpg"
     },
     {
         "who": "Renata Morais",
         "date": "2020-02-02T16:00:00Z",
         "text": "Alguem tem barraca para emprestar ?",
-        "image": "lib/assets/images/selfie.jpg"
+        "image": "lib/assets/images/airplane.png"
     },
     {
-        "who": "Lua Aparecide",
+        "who": "Lua Aparecida",
         "date": "2020-02-02T16:00:00Z",
         "text": "Algúem pegou a grampeadora ?",
         "image": "lib/assets/images/passaro.jpg"

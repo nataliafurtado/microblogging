@@ -2,6 +2,14 @@ import 'package:flutter/rendering.dart';
 
 // Adapted these helpful functions from:
 // https://github.com/flutter/flutter/blob/master/packages/flutter/test/material/text_field_test.dart
+/*
+
+    O Teddy foi pego pronto na internet.
+    Essa classe foi pega pronta da internet.
+
+
+
+*/
 
 // Returns first render editable
 RenderEditable findRenderEditable(RenderObject root) {
