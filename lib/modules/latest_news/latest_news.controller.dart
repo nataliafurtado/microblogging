@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:microblogging/functions/functions.dart';
+import 'package:microblogging/widgets/dialog.dart';
 import 'package:mobx/mobx.dart';
 
 import '../../models/news.dart';
@@ -20,10 +22,14 @@ abstract class LatestNewsControllerBase with Store, ChangeNotifier {
 
   @action
   fetchLatestNews() async {
-    news = await latestNwesRepository.fetchLatestNews();
-
-    // for (var i = 0; i < news.news.length; i++) {
-    //   print(news.news[i].message.content);
-    // }
+    try {
+      news = await latestNwesRepository.fetchLatestNews();
+    } catch (e) {
+      if (e is int) {
+        showCustomDialog(DialogWarn("Erro: " + e.toString()));
+      } else {
+        showCustomDialog(DialogWarn("Algo inesperado ocorreu"));
+      }
+    }
   }
 }

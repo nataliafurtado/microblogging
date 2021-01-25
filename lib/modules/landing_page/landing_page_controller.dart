@@ -10,32 +10,38 @@ abstract class LandingPageControllerBase with Store, ChangeNotifier {
   final BuildContext context;
   LandingPageControllerBase(this.context);
 
+  final GlobalKey<AnimatedListState> listKey = GlobalKey<AnimatedListState>();
+
+  @observable
+  List<String> items = [];
+
+  @action
+  addItem(String item) {
+    listKey.currentState
+        .insertItem(items.length, duration: const Duration(milliseconds: 500));
+    items = []
+      ..addAll(items)
+      ..add(item);
+  }
+
   initLogic(context) async {
-    await Future.delayed(Duration(seconds: 1));
+    loadSkills();
+    await Future.delayed(Duration(seconds: 7));
     Navigator.popAndPushNamed(context, '/login-page');
-
-    // SharedPreferences prefs = await SharedPreferences.getInstance();
-    // if (prefs.containsKey("pa-app")) {
-    //   Provider.of<GlobalAccess>(context, listen: false).controllerIdSheet.text =
-    //       prefs.getString("pa-app");
-    //   Navigator.popAndPushNamed(context, '/list-page');
-    // }
   }
 
-  configureAndGoToList(context) async {
-    // showCustomDialog(DialogCircularProgressIndicator());
-    // saveId();
-    // await _listRepository.doPost(ActionEvent(action: Constants.config));
-    // Navigator.pop(context);
-    // Navigator.popAndPushNamed(context, '/list-page');
-  }
-
-  Future saveId() async {
-    // SharedPreferences prefs = await SharedPreferences.getInstance();
-    // prefs.setString(
-    //     "pa-app",
-    //     Provider.of<GlobalAccess>(context, listen: false)
-    //         .controllerIdSheet
-    //         .text);
+  loadSkills() async {
+    addItem("Experiente em DART/FLUTTER");
+    await Future.delayed(Duration(seconds: 1));
+    addItem("API REST");
+    await Future.delayed(Duration(seconds: 1));
+    addItem("Dev skills");
+    await Future.delayed(Duration(seconds: 1));
+    addItem("SCRUM");
+    await Future.delayed(Duration(seconds: 1));
+    addItem("Testes automatizados");
+    await Future.delayed(Duration(seconds: 1));
+    addItem("Banco de dados relacional");
+    await Future.delayed(Duration(seconds: 1));
   }
 }

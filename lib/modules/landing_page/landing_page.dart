@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
 import '../../assets/constants.dart';
 import '../../assets/style.dart';
 import '../../functions/functions.dart';
 import '../../widgets/title_widget.dart';
-import 'package:provider/provider.dart';
-
 import 'landing_page_controller.dart';
+import 'widgets/landing_page_icons.dart';
+import 'widgets/landing_page_slide_it.dart';
 
 class LandingPage extends StatefulWidget {
   @override
@@ -13,51 +15,56 @@ class LandingPage extends StatefulWidget {
 }
 
 class _LandingPageState extends State<LandingPage> {
-  final double totalSizeOfAllWidgets = 750;
+  final double totalSizeOfAllWidgets = 260;
+
   @override
   Widget build(BuildContext context) {
-    LandingPageController controllerGlobalAcess =
+    LandingPageController controllerLandingPage =
         Provider.of<LandingPageController>(context, listen: false);
 
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      controllerGlobalAcess.initLogic(context);
+      controllerLandingPage.initLogic(context);
     });
 
     return Scaffold(
       backgroundColor: Style.iceBackground,
       body: SingleChildScrollView(
         child: Container(
-          // padding: EdgeInsets.symmetric(horizontal: 24),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Container(height: Constants.topPadding),
-              Hero(
-                tag: "title",
-                child: TitleWidget(
-                  Constants.microblogging,
-                ),
+              TitleWidget(
+                "Natália Furtado",
               ),
-              configurationsText(context),
-              Text("Splash creen icon e nat info"),
               Container(height: 30),
               Container(
-                  height: calculateBottonButtonsBottonDistance(
-                      context, totalSizeOfAllWidgets)),
+                height: calculateLandingPageListHeight(
+                    context, totalSizeOfAllWidgets),
+                width: 250,
+                alignment: Alignment.center,
+                child: AnimatedList(
+                  key: controllerLandingPage.listKey,
+                  initialItemCount: controllerLandingPage.items.length,
+                  itemBuilder: (context, index, animation) {
+                    return LandingPageSlideIt(context, index, animation,
+                        controllerLandingPage, totalSizeOfAllWidgets);
+                  },
+                ),
+              ),
+              Container(height: 30),
+              Container(
+                child: Text(
+                  "natalia.furtado.t@gmail.com",
+                  style: TextStyle(color: Style.primaryColor),
+                ),
+              ),
+              LandingPageIcons(),
+              Container(height: 30),
             ],
           ),
         ),
-      ),
-    );
-  }
-
-  Widget configurationsText(context) {
-    return Container(
-      height: 300,
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [],
       ),
     );
   }

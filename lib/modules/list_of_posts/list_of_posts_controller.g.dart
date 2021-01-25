@@ -39,6 +39,22 @@ mixin _$ListOfPostsController on ListOfPostsControllerBase, Store {
     });
   }
 
+  final _$isLoadingImageAtom =
+      Atom(name: 'ListOfPostsControllerBase.isLoadingImage');
+
+  @override
+  bool get isLoadingImage {
+    _$isLoadingImageAtom.reportRead();
+    return super.isLoadingImage;
+  }
+
+  @override
+  set isLoadingImage(bool value) {
+    _$isLoadingImageAtom.reportWrite(value, super.isLoadingImage, () {
+      super.isLoadingImage = value;
+    });
+  }
+
   final _$fetchPostsAsyncAction =
       AsyncAction('ListOfPostsControllerBase.fetchPosts');
 
@@ -106,7 +122,8 @@ mixin _$ListOfPostsController on ListOfPostsControllerBase, Store {
   String toString() {
     return '''
 posts: ${posts},
-imageString: ${imageString}
+imageString: ${imageString},
+isLoadingImage: ${isLoadingImage}
     ''';
   }
 }

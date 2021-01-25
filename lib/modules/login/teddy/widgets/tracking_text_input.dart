@@ -28,7 +28,8 @@ class TrackingTextInput extends StatefulWidget {
       this.textController,
       this.hint,
       this.label,
-      this.isObscured = false})
+      this.isObscured = false,
+      this.keyPassed})
       : super(key: key);
   final CaretMoved onCaretMoved;
   final TextChanged onTextChanged;
@@ -38,6 +39,7 @@ class TrackingTextInput extends StatefulWidget {
   final String hint;
   final String label;
   final bool isObscured;
+  final Key keyPassed;
   @override
   _TrackingTextInputState createState() => _TrackingTextInputState();
 }
@@ -77,13 +79,16 @@ class _TrackingTextInputState extends State<TrackingTextInput> {
       padding: const EdgeInsets.only(bottom: 20.0),
       child: Focus(
         onFocusChange: widget.onFocusChange,
-        child: TextFormField(
-          decoration:
-              Style.inputDecoration(hint: widget.hint, label: widget.label),
+        child: Container(
           key: _fieldKey,
-          controller: widget.textController,
-          obscureText: widget.isObscured,
-          validator: widget.validator,
+          child: TextFormField(
+            decoration:
+                Style.inputDecoration(hint: widget.hint, label: widget.label),
+            key: widget.keyPassed,
+            controller: widget.textController,
+            obscureText: widget.isObscured,
+            validator: widget.validator,
+          ),
         ),
       ),
     );

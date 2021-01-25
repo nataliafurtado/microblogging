@@ -1,7 +1,5 @@
 import 'dart:convert';
-
 import 'package:http/http.dart' as http;
-
 import '../../models/news.dart';
 
 class LatestNwesRepository {
@@ -9,8 +7,16 @@ class LatestNwesRepository {
     String url = "https://gb-mobile-app-teste.s3.amazonaws.com/data.json";
 
     News news = News(news: []);
-    var response = await http.get(url);
-    news = News.fromJson(json.decode(response.body));
+    try {
+      http.Response response = await http.get(url);
+      if (response.statusCode > 199 && response.statusCode < 300) {
+        news = News.fromJson(json.decode(response.body));
+      } else {
+        throw response.statusCode;
+      }
+    } catch (e) {
+      throw "Erro inesperado";
+    }
 
     return news;
   }

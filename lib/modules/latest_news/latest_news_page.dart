@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:microblogging/global_acess.dart';
 import 'package:provider/provider.dart';
 
 import '../../models/latest_news.dart';
@@ -23,7 +24,11 @@ class LatestNewsPage extends StatelessWidget {
           : Column(
               children: [
                 Container(height: 40),
-                TitleWidget("Últimas novidades"),
+                TitleWidget(
+                  "Últimas novidades",
+                  logout:
+                      Provider.of<GlobalAccess>(context, listen: false).logout,
+                ),
                 Expanded(
                   child: RefreshIndicator(
                     onRefresh: () {

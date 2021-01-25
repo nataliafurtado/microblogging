@@ -1,10 +1,14 @@
+import 'dart:io';
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:mobx/mobx.dart';
+import 'package:path_provider/path_provider.dart';
+import 'package:provider/provider.dart';
 
-import '../../functions/functions.dart';
+import '../../global_acess.dart';
 import '../../models/post.dart';
-import '../../widgets/dialog_circular_progress_indicator.dart';
 import 'list_of_posts_repository.dart';
 
 part 'list_of_posts_controller.g.dart';
@@ -26,6 +30,10 @@ abstract class ListOfPostsControllerBase with Store, ChangeNotifier {
   String data;
   @observable
   String imageString;
+  @observable
+  File imageFile;
+  @observable
+  bool isLoadingImage = false;
 
   @action
   fetchPosts() async {
@@ -38,8 +46,8 @@ abstract class ListOfPostsControllerBase with Store, ChangeNotifier {
   goToEditPostPage(int index) async {
     data = DateTime.now().toIso8601String();
     controllerText.text = posts[index].text;
-    imageString = posts[index].image;
-
+    imageString = posts[index].imageString;
+    isLoadingImage = false;
     indexToEdit = index;
     Navigator.pushNamed(context, '/edit-create-post', arguments: this);
   }
@@ -48,15 +56,19 @@ abstract class ListOfPostsControllerBase with Store, ChangeNotifier {
     data = DateTime.now().toIso8601String();
     indexToEdit = null;
     imageString = null;
+    imageFile = null;
+    isLoadingImage = false;
     controllerText.text = "";
     Navigator.pushNamed(context, '/edit-create-post', arguments: this);
   }
 
   @action
   saveEditPost() async {
+    isLoadingImage = false;
     if (indexToEdit != null) {
       posts[indexToEdit].text = controllerText.text;
-      posts[indexToEdit].image = imageString ?? "";
+      posts[indexToEdit].imageString = imageString ?? "";
+      posts[indexToEdit].imageFile = imageFile;
     } else {
       await saveNewPost();
     }
@@ -67,8 +79,9 @@ abstract class ListOfPostsControllerBase with Store, ChangeNotifier {
     posts.add(Post(
       date: data,
       text: controllerText.text,
-      who: "tttttt",
-      image: imageString ?? "",
+      who: Provider.of<GlobalAccess>(context, listen: false).user.name,
+      imageString: imageString ?? "",
+      imageFile: imageFile,
     ));
   }
 
@@ -77,7 +90,12 @@ abstract class ListOfPostsControllerBase with Store, ChangeNotifier {
     final pickedFile = await ImagePicker().getImage(
       source: ImageSource.camera,
     );
-    if (pickedFile != null) imageString = pickedFile.path;
+    isLoadingImage = true;
+    await Future.delayed(Duration(seconds: 2));
+    if (pickedFile != null) {
+      imageFile = File(pickedFile.path);
+    }
+    isLoadingImage = false;
   }
 
   @action
@@ -85,12 +103,18 @@ abstract class ListOfPostsControllerBase with Store, ChangeNotifier {
     final pickedFile = await ImagePicker().getImage(
       source: ImageSource.gallery,
     );
-    if (pickedFile != null) imageString = pickedFile.path;
+    isLoadingImage = true;
+    await Future.delayed(Duration(seconds: 2));
+    if (pickedFile != null) {
+      imageFile = File(pickedFile.path);
+    }
+    isLoadingImage = false;
   }
 
   @action
   deleteImage() {
     imageString = null;
+    imageFile = null;
   }
 
   @action

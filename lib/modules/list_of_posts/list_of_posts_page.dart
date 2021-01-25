@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:microblogging/global_acess.dart';
 import 'package:provider/provider.dart';
 
 import '../../assets/constants.dart';
@@ -33,15 +34,14 @@ class _ListOfPostsPageState extends State<ListOfPostsPage> {
       return Column(
         children: [
           Container(height: 40),
-          Hero(
-            tag: "title",
-            child: TitleWidget(
-              Constants.microblogging,
-            ),
+          TitleWidget(
+            Constants.microblogging,
+            logout: Provider.of<GlobalAccess>(context, listen: false).logout,
           ),
           Expanded(
             child: ListView.builder(
-                padding: EdgeInsets.zero,
+                key: Key("list-posts"),
+                padding: EdgeInsets.only(bottom: 80),
                 itemCount: controllerListOfPosts.posts.length,
                 itemBuilder: (ctx, index) {
                   return Dismissible(
@@ -58,9 +58,6 @@ class _ListOfPostsPageState extends State<ListOfPostsPage> {
                       confirmDismiss: dialogShouldDismiss,
                       movementDuration: Duration(seconds: 1));
                 }),
-          ),
-          Container(
-            height: Constants.padding,
           ),
         ],
       );

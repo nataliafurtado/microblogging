@@ -25,6 +25,7 @@ class LoginButtons extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
                 TrackingTextInput(
+                  keyPassed: Key("imput-login-login"),
                   textController: controlleLogin.loginController,
                   label: "Login",
                   hint: "Digite seu login",
@@ -39,6 +40,7 @@ class LoginButtons extends StatelessWidget {
                   },
                 ),
                 TrackingTextInput(
+                  keyPassed: Key("imput-login-password"),
                   textController: controlleLogin.passwordController,
                   label: "Senha",
                   hint: "Digite sua senha",

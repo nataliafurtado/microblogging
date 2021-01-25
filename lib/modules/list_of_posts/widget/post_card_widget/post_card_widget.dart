@@ -32,7 +32,7 @@ class PostCard extends StatelessWidget {
         decoration: Style.cardDecoration,
         child: Column(
           children: [
-            PostCardImageTopPart(post.image),
+            PostCardImageTopPart(post),
             PostCardTextBottonPart(post),
           ],
         ),

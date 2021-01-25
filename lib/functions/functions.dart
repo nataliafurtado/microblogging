@@ -1,4 +1,7 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
+import 'package:http/http.dart';
 import 'package:intl/intl.dart';
 
 import '../services/navigator_sergice.dart';
@@ -29,6 +32,14 @@ void showCustomDialog(Widget dialog) {
 double calculateBottonButtonsBottonDistance(context, totalSizeOfAllWidgets) {
   if (MediaQuery.of(context).size.height < totalSizeOfAllWidgets) {
     return 30;
+  } else {
+    return MediaQuery.of(context).size.height - totalSizeOfAllWidgets;
+  }
+}
+
+double calculateLandingPageListHeight(context, totalSizeOfAllWidgets) {
+  if ((MediaQuery.of(context).size.height - totalSizeOfAllWidgets) < 300) {
+    return 300;
   } else {
     return MediaQuery.of(context).size.height - totalSizeOfAllWidgets;
   }

@@ -27,7 +27,8 @@ class _CameraWidgetState extends State<CameraWidget> {
             Stack(
               children: <Widget>[
                 imageContainer(controllerListOfPost, context),
-                if (controllerListOfPost.imageString != null)
+                if (controllerListOfPost.imageString != null ||
+                    controllerListOfPost.imageFile != null)
                   Positioned(
                       bottom: 0,
                       right: 0,
@@ -70,6 +71,48 @@ class _CameraWidgetState extends State<CameraWidget> {
     ));
   }
 
+  Widget showImage(ListOfPostsController controllerListOfPost, context) {
+    if (controllerListOfPost.isLoadingImage) {
+      return Container(
+        child: CircularProgressIndicator(),
+      );
+    } else if (controllerListOfPost.imageString != null &&
+        controllerListOfPost.imageString.isNotEmpty) {
+      return Image.asset(
+        controllerListOfPost.imageString,
+        fit: BoxFit.cover,
+      );
+    } else if (controllerListOfPost.imageFile != null) {
+      return Image.file(
+        controllerListOfPost.imageFile,
+        fit: BoxFit.cover,
+      );
+    } else {
+      return InkWell(
+        onTap: () {
+          _showPicker(controllerListOfPost, context);
+        },
+        child: Container(
+          height: 60,
+          decoration: BoxDecoration(
+              color: Colors.white,
+              shape: BoxShape.circle,
+              border: Border.all(
+                color: Style.primaryColor,
+              )),
+          alignment: Alignment.center,
+          child: Container(
+            child: FaIcon(
+              FontAwesomeIcons.camera,
+              color: Style.detailColor,
+              size: 50,
+            ),
+          ),
+        ),
+      );
+    }
+  }
+
   void _showPicker(ListOfPostsController controllerListOfPost, context) {
     showModalBottomSheet(
         context: context,
@@ -98,37 +141,5 @@ class _CameraWidgetState extends State<CameraWidget> {
             ),
           );
         });
-  }
-
-  Widget showImage(ListOfPostsController controllerListOfPost, context) {
-    if (controllerListOfPost.imageString != null) {
-      return Image.asset(
-        controllerListOfPost.imageString,
-        fit: BoxFit.cover,
-      );
-    } else {
-      return InkWell(
-        onTap: () {
-          _showPicker(controllerListOfPost, context);
-        },
-        child: Container(
-          height: 60,
-          decoration: BoxDecoration(
-              color: Colors.white,
-              shape: BoxShape.circle,
-              border: Border.all(
-                color: Style.primaryColor,
-              )),
-          alignment: Alignment.center,
-          child: Container(
-            child: FaIcon(
-              FontAwesomeIcons.camera,
-              color: Style.detailColor,
-              size: 50,
-            ),
-          ),
-        ),
-      );
-    }
   }
 }

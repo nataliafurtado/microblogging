@@ -36,6 +36,7 @@ dependencies:
   google_fonts: ^1.1.1
   cached_network_image: ^2.5.0
   image_picker: ^0.6.7+21
+  path_provider: ^1.6.27
 
 
 
@@ -45,7 +46,10 @@ dependencies:
   cupertino_icons: ^0.1.3
 
 dev_dependencies:
+  test: 
   flutter_test:
+    sdk: flutter
+  flutter_driver:  
     sdk: flutter
   build_runner: ^1.10.0
   mobx_codegen: ^1.1.0+1  

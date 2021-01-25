@@ -12,7 +12,7 @@ import 'login_controller.dart';
 
 class LoginNewUserPage extends StatelessWidget {
   final _formKey = GlobalKey<FormState>();
-  final double totalSizeOfAllWidgets = 560;
+  final double totalSizeOfAllWidgets = 600;
   @override
   Widget build(BuildContext context) {
     LoginController controlleLogin =
@@ -46,6 +46,20 @@ class LoginNewUserPage extends StatelessWidget {
                 ),
                 Container(height: 40),
                 TextFormField(
+                  key: Key("imput-text-new-user-name"),
+                  controller: controlleLogin.newNameController,
+                  decoration: Style.inputDecoration(
+                      hint: "Digite seu nome", label: "Nome"),
+                  validator: (String text) {
+                    if (text.trim().isEmpty) {
+                      return "Campo não pode ser vazio";
+                    }
+                    return null;
+                  },
+                ),
+                Container(height: 30),
+                TextFormField(
+                  key: Key("imput-text-new-user-login"),
                   controller: controlleLogin.newLoginController,
                   decoration: Style.inputDecoration(
                       hint: "Digite um novo login", label: "Login"),
@@ -58,6 +72,7 @@ class LoginNewUserPage extends StatelessWidget {
                 ),
                 Container(height: 30),
                 TextFormField(
+                  key: Key("imput-text-new-user-password"),
                   obscureText: true,
                   controller: controlleLogin.newPasswordController,
                   decoration: Style.inputDecoration(
@@ -71,7 +86,7 @@ class LoginNewUserPage extends StatelessWidget {
                     return null;
                   },
                 ),
-                Container(height: 100),
+                Container(height: 60),
                 loginButton(controlleLogin),
               ],
             ),
@@ -82,10 +97,14 @@ class LoginNewUserPage extends StatelessWidget {
   }
 
   Widget loginButton(LoginController loginController) {
-    return Button("Cadastrar", () {
-      if (_formKey.currentState.validate()) {
-        loginController.saveNewUser();
-      }
-    });
+    return Button(
+      "Cadastrar",
+      () {
+        if (_formKey.currentState.validate()) {
+          loginController.saveNewUser();
+        }
+      },
+      keyPassed: Key("save-new-user-button"),
+    );
   }
 }

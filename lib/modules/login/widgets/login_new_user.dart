@@ -21,6 +21,7 @@ class LoginNewUser extends StatelessWidget {
               .goToNewUSerPage();
         },
         child: Container(
+          key: Key("button-new-user"),
           child: Row(
             mainAxisSize: MainAxisSize.min,
             children: [
