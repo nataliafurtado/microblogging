@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../../assets/style.dart';
 
-class TrashBackground extends StatelessWidget {
+class DismissibleTrashBackground extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(

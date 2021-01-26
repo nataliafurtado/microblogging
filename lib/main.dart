@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:microblogging/assets/style.dart';
 import 'package:provider/provider.dart';
 
 import 'global_acess.dart';
@@ -22,7 +23,7 @@ class MyApp extends StatelessWidget {
           initialRoute: '/',
           onGenerateRoute: RouteGenerator.generateRoute,
           theme: ThemeData(
-            primarySwatch: Colors.purple,
+            primarySwatch: Style.primaryColor,
             visualDensity: VisualDensity.adaptivePlatformDensity,
             textTheme: GoogleFonts.openSansTextTheme(
               Theme.of(context).textTheme,

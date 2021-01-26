@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:microblogging/global_acess.dart';
+import 'package:microblogging/modules/latest_news/widget/latest_news_card/latest_news_card.dart';
 import 'package:provider/provider.dart';
 
 import '../../models/latest_news.dart';
@@ -41,16 +42,14 @@ class LatestNewsPage extends StatelessWidget {
                           LatestNews latestNews =
                               controllerLatestNews.news.news[index];
                           return Container(
-                            child: Text(latestNews.user.name),
+                            child: LatestNewsCard(latestNews),
                           );
                         }),
                   ),
                 ),
-                Container(height: 30),
+                Container(height: 10),
               ],
             );
     });
   }
 }
-// Image.network(controllerLatestNews
-//     .news.news[index].user.profilePicture

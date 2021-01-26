@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:microblogging/widgets/dialog.dart';
 import 'package:provider/provider.dart';
 
 import '../../assets/constants.dart';
@@ -12,13 +11,15 @@ import 'login_controller.dart';
 
 class LoginNewUserPage extends StatelessWidget {
   final _formKey = GlobalKey<FormState>();
-  final double totalSizeOfAllWidgets = 600;
+  final double totalSizeOfAllWidgets = 640;
   @override
   Widget build(BuildContext context) {
     LoginController controlleLogin =
         Provider.of<LoginController>(context, listen: false);
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        backgroundColor: Style.primaryColor,
+      ),
       body: SingleChildScrollView(
         child: Container(
           padding: EdgeInsets.symmetric(
@@ -44,7 +45,7 @@ class LoginNewUserPage extends StatelessWidget {
                     ),
                   ),
                 ),
-                Container(height: 40),
+                Container(height: 100),
                 TextFormField(
                   key: Key("imput-text-new-user-name"),
                   controller: controlleLogin.newNameController,

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:microblogging/modules/login/teddy/teddy_controller.dart';
 import 'package:provider/provider.dart';
 
 import '../../assets/constants.dart';
@@ -8,6 +7,7 @@ import '../../widgets/button.dart';
 import '../../widgets/title_widget.dart';
 import 'login_controller.dart';
 import 'teddy/teddy.dart';
+import 'teddy/teddy_controller.dart';
 import 'widgets/login_buttons.dart';
 import 'widgets/login_developed_by.dart';
 import 'widgets/login_new_user.dart';
@@ -42,7 +42,8 @@ class LoginPage extends StatelessWidget {
               ),
               loginButton(loginController, context),
               Container(height: 60),
-              LoginDevelopedBy()
+              LoginDevelopedBy(),
+              Container(height: 20),
             ],
           ),
         ),

@@ -1,20 +1,26 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:microblogging/modules/list_of_posts/widget/page_edit_delete_post_on_edit.dart';
+import 'package:microblogging/modules/list_of_posts/widget/page_imput_field_post_text.dart';
 import 'package:provider/provider.dart';
 
 import '../../assets/style.dart';
 import '../../functions/functions.dart';
 import '../../widgets/button.dart';
 import 'list_of_posts_controller.dart';
-import 'widget/camera_widget.dart';
+import 'widget/camera_widget/camera_widget.dart';
 
 class EditCreatePostPage extends StatelessWidget {
-  final double totalSizeOfAllWidgets = 600;
   final _formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
+    final double totalSizeOfAllWidgets = 710;
     ListOfPostsController controllerListOfPost =
         Provider.of<ListOfPostsController>(context, listen: false);
+    log(flexHeightSpacing(context, 1).toString());
     return Scaffold(
       body: SingleChildScrollView(
         child: Container(
@@ -24,12 +30,10 @@ class EditCreatePostPage extends StatelessWidget {
               : flexHeightSpacing(context, 1),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.end,
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              Container(
-                width: MediaQuery.of(context).size.width,
-                child: CameraWidget(),
-              ),
+              DeletePostOnEdit(),
+              CameraWidget(),
               Container(height: 60),
               Container(
                 padding: EdgeInsets.all(10),
@@ -38,24 +42,9 @@ class EditCreatePostPage extends StatelessWidget {
                   style: Style.formSubTitle,
                 ),
               ),
-              Container(
-                height: 180,
-                child: Form(
-                  key: _formKey,
-                  child: TextFormField(
-                    controller: controllerListOfPost.controllerText,
-                    maxLines: 7,
-                    decoration: Style.inputDecoration(),
-                    validator: (String text) {
-                      if (text.trim().isEmpty) {
-                        return "Campo não pode ser vazio";
-                      } else if (text.length > 281) {
-                        return "Máximo de 280 caracteres";
-                      }
-                      return null;
-                    },
-                  ),
-                ),
+              ImputFieldPosText(
+                _formKey,
+                controllerListOfPost.controllerText,
               ),
               Container(height: 60),
               Button("Salvar", () {

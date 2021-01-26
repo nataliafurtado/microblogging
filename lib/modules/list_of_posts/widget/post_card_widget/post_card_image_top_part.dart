@@ -14,12 +14,12 @@ class PostCardImageTopPart extends StatelessWidget {
       decoration: BoxDecoration(
         borderRadius: BorderRadius.only(
             topLeft: Radius.circular(10), topRight: Radius.circular(10)),
-        image: loadImageLOgic(),
+        image: loadImageLogic(),
       ),
     );
   }
 
-  DecorationImage loadImageLOgic() {
+  DecorationImage loadImageLogic() {
     if (post.imageString != null && post.imageString.isNotEmpty) {
       return DecorationImage(
           fit: BoxFit.cover,
