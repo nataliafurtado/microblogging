@@ -12,7 +12,7 @@ class DeletePostOnEdit extends StatelessWidget {
         Provider.of<ListOfPostsController>(context, listen: false);
     return controllerListOfPost.indexToEdit != null
         ? Container(
-            height: 60,
+            height: 70,
             width: double.infinity,
             alignment: Alignment.bottomRight,
             child: InkWell(

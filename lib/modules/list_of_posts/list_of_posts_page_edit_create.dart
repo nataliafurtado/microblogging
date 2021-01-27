@@ -1,16 +1,16 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:microblogging/modules/list_of_posts/widget/page_edit_delete_post_on_edit.dart';
-import 'package:microblogging/modules/list_of_posts/widget/page_imput_field_post_text.dart';
+import 'package:microblogging/modules/list_of_posts/widget/imput_text_count_down.dart';
 import 'package:provider/provider.dart';
 
 import '../../assets/style.dart';
 import '../../functions/functions.dart';
 import '../../widgets/button.dart';
 import 'list_of_posts_controller.dart';
-import 'widget/camera_widget/camera_widget.dart';
+import 'widget/camera_widget/image_widget.dart';
+import 'widget/page_edit_delete_post_on_edit.dart';
+import 'widget/page_imput_field_post_text.dart';
 
 class EditCreatePostPage extends StatelessWidget {
   final _formKey = GlobalKey<FormState>();
@@ -33,7 +33,7 @@ class EditCreatePostPage extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               DeletePostOnEdit(),
-              CameraWidget(),
+              ImageWidget(),
               Container(height: 60),
               Container(
                 padding: EdgeInsets.all(10),
@@ -46,6 +46,7 @@ class EditCreatePostPage extends StatelessWidget {
                 _formKey,
                 controllerListOfPost.controllerText,
               ),
+              ImputTextCountDown(),
               Container(height: 60),
               Button("Salvar", () {
                 if (_formKey.currentState.validate()) {

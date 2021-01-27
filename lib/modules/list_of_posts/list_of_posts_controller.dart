@@ -32,6 +32,8 @@ abstract class ListOfPostsControllerBase with Store, ChangeNotifier {
   File imageFile;
   @observable
   bool isLoadingImage = false;
+  @observable
+  int countDown = 280;
 
   @action
   fetchPosts() async {
@@ -47,6 +49,7 @@ abstract class ListOfPostsControllerBase with Store, ChangeNotifier {
     imageString = posts[index].imageString;
     isLoadingImage = false;
     indexToEdit = index;
+    coutTextLenght();
     Navigator.pushNamed(context, '/edit-create-post', arguments: this);
   }
 
@@ -57,6 +60,7 @@ abstract class ListOfPostsControllerBase with Store, ChangeNotifier {
     imageFile = null;
     isLoadingImage = false;
     controllerText.text = "";
+    coutTextLenght();
     Navigator.pushNamed(context, '/edit-create-post', arguments: this);
   }
 
@@ -125,5 +129,15 @@ abstract class ListOfPostsControllerBase with Store, ChangeNotifier {
   deletePostOnEdit(indexPassed) async {
     await deletePost(indexToEdit);
     Navigator.pop(indexPassed);
+  }
+
+  coutTextLenght() {
+    loadcountDown(controllerText.text);
+  }
+
+  @action
+  loadcountDown(String textPassed) {
+    print(textPassed);
+    countDown = 280 - textPassed.length;
   }
 }

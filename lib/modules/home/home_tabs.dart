@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
+
+import 'package:google_fonts/google_fonts.dart';
 
 import '../../assets/style.dart';
 import 'home_controller.dart';
@@ -11,27 +12,33 @@ class HomeTabs extends StatelessWidget {
   Widget build(BuildContext context) {
     HomeController controllerHome =
         Provider.of<HomeController>(context, listen: false);
+
     return Observer(builder: (_) {
       return TabBar(
         tabs: [
           Tab(
-            child: Container(
-                child: FaIcon(
-              FontAwesomeIcons.microblog,
-              color: controllerHome.currentTabBar == 0
-                  ? Style.primaryColor
-                  : Style.menuBackground,
-            )),
+            child: Text(
+              "Posts",
+              style: GoogleFonts.pacifico(
+                  fontSize: 16,
+                  letterSpacing: 0.7,
+                  color: controllerHome.currentTabBar == 0
+                      ? Style.primaryColor
+                      : Style.menuBackground),
+            ),
           ),
           Tab(
             child: Container(
-                child: FaIcon(
-              FontAwesomeIcons.bullhorn,
-              size: 20,
-              color: controllerHome.currentTabBar == 1
-                  ? Style.primaryColor
-                  : Style.menuBackground,
-            )),
+              child: Image.asset(
+                "lib/assets/images/bot2.png",
+                color: controllerHome.currentTabBar == 1
+                    ? Style.primaryColor
+                    : Style.menuBackground,
+                height: 65,
+                width: 65,
+                fit: BoxFit.cover,
+              ),
+            ),
           ),
         ],
         labelColor: Colors.yellow,

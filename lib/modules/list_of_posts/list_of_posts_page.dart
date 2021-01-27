@@ -1,15 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
-import 'package:microblogging/global_acess.dart';
 import 'package:provider/provider.dart';
 
 import '../../assets/constants.dart';
-import '../../assets/style.dart';
-import '../../widgets/button.dart';
+import '../../global_acess.dart';
 import '../../widgets/title_widget.dart';
 import 'list_of_posts_controller.dart';
+import 'widget/dismissible_widget.dart';
 import 'widget/post_card_widget/post_card_widget.dart';
-import 'widget/page_dismissible_trash_background.dart';
 
 class ListOfPostsPage extends StatefulWidget {
   @override
@@ -44,57 +42,15 @@ class _ListOfPostsPageState extends State<ListOfPostsPage> {
                 padding: EdgeInsets.only(bottom: 80),
                 itemCount: controllerListOfPosts.posts.length,
                 itemBuilder: (ctx, index) {
-                  return Dismissible(
-                      dismissThresholds: {DismissDirection.endToStart: 0.9},
-                      background: DismissibleTrashBackground(),
-                      direction: DismissDirection.endToStart,
-                      key: Key(controllerListOfPosts.posts[index].text +
-                          index.toString()),
-                      onDismissed: (direction) {
-                        controllerListOfPosts.deletePost(index);
-                      },
-                      child:
-                          PostCard(controllerListOfPosts.posts[index], index),
-                      confirmDismiss: dialogShouldDismiss,
-                      movementDuration: Duration(seconds: 1));
+                  return DismissibleWidget(
+                    index: index,
+                    postCard:
+                        PostCard(controllerListOfPosts.posts[index], index),
+                  );
                 }),
           ),
         ],
       );
     });
-  }
-
-  Future<bool> dialogShouldDismiss(DismissDirection direction) async {
-    return await showDialog(
-        context: context,
-        builder: (BuildContext context) {
-          return AlertDialog(
-            content: Container(
-              height: 400,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    "Tem certeza que deseja excluir esse post ?",
-                    style: Style.cardText,
-                  ),
-                  Container(height: 20),
-                  Button("Excluir", () {
-                    Navigator.of(context).pop(true);
-                  }),
-                  Container(height: 20),
-                  Button("Cancelar", () {
-                    Navigator.of(context).pop(false);
-                  }),
-                  Container(height: 20),
-                  Text(
-                    "*Esta ação não pode ser desfeita ",
-                    style: Style.cardText,
-                  ),
-                ],
-              ),
-            ),
-          );
-        });
   }
 }

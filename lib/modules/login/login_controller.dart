@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:mobx/mobx.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../assets/constants.dart';
+import '../../assets/style.dart';
 import '../../functions/functions.dart';
 import '../../global_acess.dart';
 import '../../models/user.dart';
@@ -77,5 +79,17 @@ abstract class LoginControllerBase with Store, ChangeNotifier {
       newNameController.text.trim(),
     ]);
     Navigator.of(context).pop();
+    showToasUserRegistered();
+  }
+
+  showToasUserRegistered() {
+    Fluttertoast.showToast(
+        msg: "Usuário cadastrado com sucesso",
+        toastLength: Toast.LENGTH_SHORT,
+        gravity: ToastGravity.CENTER,
+        timeInSecForIosWeb: 1,
+        backgroundColor: Style.primaryColor,
+        textColor: Colors.white,
+        fontSize: 16.0);
   }
 }

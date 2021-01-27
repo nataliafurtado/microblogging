@@ -37,6 +37,8 @@ dependencies:
   cached_network_image: ^2.5.0
   image_picker: ^0.6.7+21
   path_provider: ^1.6.27
+  flutter_svg: ^0.19.2+1
+  fluttertoast: ^7.1.6
 
 
 
@@ -74,7 +76,7 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
     - lib/assets/images/
-    - lib/assets/Teddy.flr
+    - lib/assets/
     - lib/mocks/list_of_posts.json
 
   #   - images/a_dot_ham.jpeg

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:provider/provider.dart';
 
+import '../../../../assets/style.dart';
 import '../../../../functions/functions.dart';
 import '../../list_of_posts_controller.dart';
 import 'empty_container.dart';
@@ -10,13 +12,13 @@ class ImageContainer extends StatelessWidget {
   Widget build(BuildContext context) {
     ListOfPostsController controllerListOfPost =
         Provider.of<ListOfPostsController>(context, listen: false);
-    return ClipOval(
-        child: Container(
-      height: flexWidthSpacing(context, 1) / 2,
-      width: flexWidthSpacing(context, 1) / 2,
-      child: showImage(controllerListOfPost, context),
-    ));
-    ;
+    return Observer(builder: (_) {
+      return ClipOval(
+          child: Container(
+              height: flexWidthSpacing(context, 1) / 2,
+              width: flexWidthSpacing(context, 1) / 2,
+              child: showImage(controllerListOfPost, context)));
+    });
   }
 
   Widget showImage(ListOfPostsController controllerListOfPost, context) {

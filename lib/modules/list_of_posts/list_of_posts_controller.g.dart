@@ -39,6 +39,21 @@ mixin _$ListOfPostsController on ListOfPostsControllerBase, Store {
     });
   }
 
+  final _$imageFileAtom = Atom(name: 'ListOfPostsControllerBase.imageFile');
+
+  @override
+  File get imageFile {
+    _$imageFileAtom.reportRead();
+    return super.imageFile;
+  }
+
+  @override
+  set imageFile(File value) {
+    _$imageFileAtom.reportWrite(value, super.imageFile, () {
+      super.imageFile = value;
+    });
+  }
+
   final _$isLoadingImageAtom =
       Atom(name: 'ListOfPostsControllerBase.isLoadingImage');
 
@@ -52,6 +67,21 @@ mixin _$ListOfPostsController on ListOfPostsControllerBase, Store {
   set isLoadingImage(bool value) {
     _$isLoadingImageAtom.reportWrite(value, super.isLoadingImage, () {
       super.isLoadingImage = value;
+    });
+  }
+
+  final _$countDownAtom = Atom(name: 'ListOfPostsControllerBase.countDown');
+
+  @override
+  int get countDown {
+    _$countDownAtom.reportRead();
+    return super.countDown;
+  }
+
+  @override
+  set countDown(int value) {
+    _$countDownAtom.reportWrite(value, super.countDown, () {
+      super.countDown = value;
     });
   }
 
@@ -119,11 +149,24 @@ mixin _$ListOfPostsController on ListOfPostsControllerBase, Store {
   }
 
   @override
+  dynamic loadcountDown(String textPassed) {
+    final _$actionInfo = _$ListOfPostsControllerBaseActionController
+        .startAction(name: 'ListOfPostsControllerBase.loadcountDown');
+    try {
+      return super.loadcountDown(textPassed);
+    } finally {
+      _$ListOfPostsControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   String toString() {
     return '''
 posts: ${posts},
 imageString: ${imageString},
-isLoadingImage: ${isLoadingImage}
+imageFile: ${imageFile},
+isLoadingImage: ${isLoadingImage},
+countDown: ${countDown}
     ''';
   }
 }

@@ -1,8 +1,9 @@
 import 'package:flare_flutter/flare_actor.dart';
 import 'package:flutter/material.dart';
-import 'package:microblogging/assets/style.dart';
-import 'package:microblogging/modules/login/teddy/teddy_controller.dart';
 import 'package:provider/provider.dart';
+
+import '../../../assets/style.dart';
+import 'teddy_controller.dart';
 
 class Teddy extends StatelessWidget {
   @override

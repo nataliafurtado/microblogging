@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
-import 'package:microblogging/global_acess.dart';
-import 'package:microblogging/modules/latest_news/widget/latest_news_card/latest_news_card.dart';
 import 'package:provider/provider.dart';
 
+import '../../global_acess.dart';
 import '../../models/latest_news.dart';
 import '../../widgets/title_widget.dart';
 import 'latest_news.controller.dart';
+import 'widget/latest_news_card/latest_news_card.dart';
 
 class LatestNewsPage extends StatelessWidget {
   @override
@@ -14,7 +14,6 @@ class LatestNewsPage extends StatelessWidget {
     LatestNewsController controllerLatestNews =
         Provider.of<LatestNewsController>(context, listen: false);
     controllerLatestNews.fetchLatestNews();
-
     return Observer(builder: (_) {
       return controllerLatestNews.news == null
           ? Container(

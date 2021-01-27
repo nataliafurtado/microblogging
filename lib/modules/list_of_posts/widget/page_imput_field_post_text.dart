@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
-import 'package:microblogging/assets/style.dart';
+import '../../../assets/style.dart';
+import '../list_of_posts_controller.dart';
 
 class ImputFieldPosText extends StatelessWidget {
   final GlobalKey<FormState> formKey;
@@ -19,6 +21,11 @@ class ImputFieldPosText extends StatelessWidget {
           controller: controllerText,
           maxLines: 7,
           decoration: Style.inputDecoration(),
+          onChanged: (text) {
+            print("message");
+            Provider.of<ListOfPostsController>(context, listen: false)
+                .loadcountDown(text);
+          },
           validator: (String text) {
             if (text.trim().isEmpty) {
               return "Campo não pode ser vazio";
