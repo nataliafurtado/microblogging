@@ -9,7 +9,6 @@ class Constants {
 
   static final lastUserLogim = "last-user-login";
 
-  static final postCard = "postCard";
   static final postCard2 = "postCard2";
   static final postCard3 = "postCard3";
 }

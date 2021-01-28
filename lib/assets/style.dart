@@ -90,6 +90,11 @@ class Style {
         color: Style.detailDarkColor,
       );
 
+  static TextStyle get primaryColorFont => TextStyle(
+        color: Style.primaryColor,
+        fontWeight: FontWeight.bold,
+      );
+
   // COLORS
 
   static Color get primaryColor => Colors.indigo;

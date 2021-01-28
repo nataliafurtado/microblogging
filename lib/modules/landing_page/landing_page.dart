@@ -57,7 +57,7 @@ class _LandingPageState extends State<LandingPage> {
               Container(
                 child: Text(
                   "natalia.furtado.t@gmail.com",
-                  style: TextStyle(color: Style.primaryColor),
+                  style: Style.primaryColorFont,
                 ),
               ),
               LandingPageIcons(),

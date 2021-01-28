@@ -7,19 +7,17 @@ import '../../assets/style.dart';
 import '../../functions/functions.dart';
 import '../../widgets/button.dart';
 import '../../widgets/title_widget.dart';
+import '../list_of_posts/widget/app_bar_page_edit_create/arrow_left_widget.dart';
 import 'login_controller.dart';
 
 class LoginNewUserPage extends StatelessWidget {
   final _formKey = GlobalKey<FormState>();
-  final double totalSizeOfAllWidgets = 640;
+  final double totalSizeOfAllWidgets = 650;
   @override
   Widget build(BuildContext context) {
     LoginController controlleLogin =
         Provider.of<LoginController>(context, listen: false);
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Style.primaryColor,
-      ),
       body: SingleChildScrollView(
         child: Container(
           padding: EdgeInsets.symmetric(
@@ -29,7 +27,12 @@ class LoginNewUserPage extends StatelessWidget {
             key: _formKey,
             child: Column(
               children: [
-                Container(height: 20),
+                Container(height: 50),
+                Container(
+                  height: 50,
+                  alignment: Alignment.centerLeft,
+                  child: ArrowLeftWidget(),
+                ),
                 TitleWidget(
                   "Novo Usuário",
                 ),

@@ -32,7 +32,7 @@ class _DismissibleWidgetState extends State<DismissibleWidget> {
     return Dismissible(
         key: Key(controllerListOfPosts.posts[widget.index].text +
             widget.index.toString()),
-        dismissThresholds: {DismissDirection.endToStart: 0.9},
+        dismissThresholds: {DismissDirection.endToStart: 0.8},
         background: DismissibleTrashBackground(),
         direction: DismissDirection.endToStart,
         onDismissed: (direction) {

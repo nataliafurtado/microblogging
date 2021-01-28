@@ -77,7 +77,7 @@ class TitleWidget extends StatelessWidget {
                           color: Style.detailColor,
                           size: 25,
                         ),
-                        title: new Text('Mudar modelo do card'),
+                        title: new Text('Mudar modelo do card de posts'),
                         onTap: () {
                           changePostCardModel();
                         }),

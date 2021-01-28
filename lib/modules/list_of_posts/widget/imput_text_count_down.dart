@@ -17,7 +17,7 @@ class ImputTextCountDown extends StatelessWidget {
           Provider.of<ListOfPostsController>(context, listen: false)
               .countDown
               .toString(),
-          style: Style.cardTitle,
+          style: Style.formSubTitle,
         ),
       );
     });

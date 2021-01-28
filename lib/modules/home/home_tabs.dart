@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
 
 import 'package:google_fonts/google_fonts.dart';
@@ -17,14 +18,12 @@ class HomeTabs extends StatelessWidget {
       return TabBar(
         tabs: [
           Tab(
-            child: Text(
-              "Posts",
-              style: GoogleFonts.pacifico(
-                  fontSize: 16,
-                  letterSpacing: 0.7,
-                  color: controllerHome.currentTabBar == 0
-                      ? Style.primaryColor
-                      : Style.menuBackground),
+            child: FaIcon(
+              FontAwesomeIcons.microblog,
+              color: controllerHome.currentTabBar == 0
+                  ? Style.primaryColor
+                  : Style.menuBackground,
+              size: 22,
             ),
           ),
           Tab(
@@ -34,8 +33,8 @@ class HomeTabs extends StatelessWidget {
                 color: controllerHome.currentTabBar == 1
                     ? Style.primaryColor
                     : Style.menuBackground,
-                height: 65,
-                width: 65,
+                height: 75,
+                width: 75,
                 fit: BoxFit.cover,
               ),
             ),

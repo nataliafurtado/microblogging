@@ -35,9 +35,12 @@ class LandingPageSlideIt extends StatelessWidget {
           leading: FaIcon(
             FontAwesomeIcons.checkCircle,
             color: Style.secondaryColor,
-            size: 16,
+            size: 20,
           ),
-          title: Text('$item', style: Style.cardSubTitle),
+          title: Text('$item',
+              style: Style.cardSubTitle.copyWith(
+                fontWeight: FontWeight.bold,
+              )),
         ),
       ),
     );

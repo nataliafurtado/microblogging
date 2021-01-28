@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
-import 'package:microblogging/modules/list_of_posts/widget/post_card_widget/post_card_widget.dart';
-import 'package:microblogging/modules/list_of_posts/widget/post_card_widget2/post_card2_widget2.dart';
-import 'package:microblogging/modules/list_of_posts/widget/post_card_widget3/post_card_widget3.dart';
 import 'package:provider/provider.dart';
 
 import '../../assets/constants.dart';
@@ -10,6 +7,8 @@ import '../../global_acess.dart';
 import '../../widgets/title_widget.dart';
 import 'list_of_posts_controller.dart';
 import 'widget/dismissible_widget.dart';
+import 'widget/post_card_widget2/post_card2_widget2.dart';
+import 'widget/post_card_widget3/post_card_widget3.dart';
 
 class ListOfPostsPage extends StatefulWidget {
   @override
@@ -50,10 +49,6 @@ class _ListOfPostsPageState extends State<ListOfPostsPage> {
                     // ignore: missing_return
                     postCard: Observer(builder: (_) {
                       if (controllerListOfPosts.postCardOption ==
-                          Constants.postCard) {
-                        return PostCard(
-                            controllerListOfPosts.posts[index], index);
-                      } else if (controllerListOfPosts.postCardOption ==
                           Constants.postCard2) {
                         return PostCard2(
                             controllerListOfPosts.posts[index], index);
