@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:microblogging/assets/constants.dart';
 import 'package:mobx/mobx.dart';
 import 'package:provider/provider.dart';
 
@@ -34,6 +35,8 @@ abstract class ListOfPostsControllerBase with Store, ChangeNotifier {
   bool isLoadingImage = false;
   @observable
   int countDown = 280;
+  @observable
+  String postCardOption = Constants.postCard3;
 
   @action
   fetchPosts() async {
@@ -139,5 +142,17 @@ abstract class ListOfPostsControllerBase with Store, ChangeNotifier {
   loadcountDown(String textPassed) {
     print(textPassed);
     countDown = 280 - textPassed.length;
+  }
+
+  @action
+  goToNextPostCardOption() {
+    if (postCardOption == Constants.postCard)
+      postCardOption = Constants.postCard2;
+    else if (postCardOption == Constants.postCard2)
+      postCardOption = Constants.postCard3;
+    else if (postCardOption == Constants.postCard3)
+      postCardOption = Constants.postCard;
+
+    Navigator.pop(context);
   }
 }

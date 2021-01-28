@@ -85,6 +85,22 @@ mixin _$ListOfPostsController on ListOfPostsControllerBase, Store {
     });
   }
 
+  final _$postCardOptionAtom =
+      Atom(name: 'ListOfPostsControllerBase.postCardOption');
+
+  @override
+  String get postCardOption {
+    _$postCardOptionAtom.reportRead();
+    return super.postCardOption;
+  }
+
+  @override
+  set postCardOption(String value) {
+    _$postCardOptionAtom.reportWrite(value, super.postCardOption, () {
+      super.postCardOption = value;
+    });
+  }
+
   final _$fetchPostsAsyncAction =
       AsyncAction('ListOfPostsControllerBase.fetchPosts');
 
@@ -160,13 +176,25 @@ mixin _$ListOfPostsController on ListOfPostsControllerBase, Store {
   }
 
   @override
+  dynamic goToNextPostCardOption() {
+    final _$actionInfo = _$ListOfPostsControllerBaseActionController
+        .startAction(name: 'ListOfPostsControllerBase.goToNextPostCardOption');
+    try {
+      return super.goToNextPostCardOption();
+    } finally {
+      _$ListOfPostsControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   String toString() {
     return '''
 posts: ${posts},
 imageString: ${imageString},
 imageFile: ${imageFile},
 isLoadingImage: ${isLoadingImage},
-countDown: ${countDown}
+countDown: ${countDown},
+postCardOption: ${postCardOption}
     ''';
   }
 }

@@ -39,6 +39,7 @@ dependencies:
   path_provider: ^1.6.27
   flutter_svg: ^0.19.2+1
   fluttertoast: ^7.1.6
+  intl: ^0.17.0-nullsafety.2
 
 
 

@@ -4,8 +4,6 @@ import 'package:flutter/material.dart';
 
 import '../../../../assets/constants.dart';
 import '../../../../assets/style.dart';
-import '../../../../assets/style.dart';
-import '../../../../assets/style.dart';
 import '../../../../models/latest_news.dart';
 
 class LatestNewsCard extends StatelessWidget {

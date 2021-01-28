@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:microblogging/modules/login/login_controller.dart';
-import 'package:microblogging/modules/login/login_page_new_user.dart';
-import 'package:microblogging/modules/login/widgets/login_new_user.dart';
 import 'package:provider/provider.dart';
 
+import 'modules/home/home_provider.dart';
 import 'modules/landing_page/landing_page.dart';
 import 'modules/landing_page/landing_page_provider.dart';
 import 'modules/list_of_posts/list_of_posts_controller.dart';
 import 'modules/list_of_posts/list_of_posts_page_edit_create.dart';
-import 'modules/home/home_provider.dart';
+import 'modules/login/login_controller.dart';
+import 'modules/login/login_page_new_user.dart';
 import 'modules/login/login_provider.dart';
 
 class RouteGenerator {

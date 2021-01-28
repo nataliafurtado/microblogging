@@ -46,6 +46,7 @@ abstract class TeddyControllerBase extends FlareControls
   // Project gaze forward by this many pixels.
   static const double _projectGaze = 60.0;
 
+  // ignore: unused_field
   String _password;
 
   @override

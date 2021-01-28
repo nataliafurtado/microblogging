@@ -4,14 +4,15 @@ import 'package:intl/intl.dart';
 import '../../../../assets/style.dart';
 import '../../../../models/post.dart';
 
-class PostCardTextBottonPart extends StatelessWidget {
+class PostCardTextBottonPart2 extends StatelessWidget {
   final Post post;
-  const PostCardTextBottonPart(
+  const PostCardTextBottonPart2(
     this.post,
   );
   @override
   Widget build(BuildContext context) {
     return Container(
+      width: double.infinity,
       alignment: Alignment.center,
       padding: EdgeInsets.all(8),
       decoration: BoxDecoration(
@@ -23,13 +24,7 @@ class PostCardTextBottonPart extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Container(
-            child: Text(
-              post.who,
-              style: Style.cardTitle,
-              maxLines: 1,
-            ),
-          ),
-          Container(
+            width: double.infinity,
             margin: EdgeInsets.only(top: 5),
             child: Text(
               post.text,
@@ -44,8 +39,6 @@ class PostCardTextBottonPart extends StatelessWidget {
                 child: Text(
                   DateFormat("d 'de' MMMM 'de' y", "pt_BR")
                       .format(DateTime.parse(post.date)),
-
-                  // convertDate(post.date),
                   style: Style.cardSubTitle,
                 ),
               ),

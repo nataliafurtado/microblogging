@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:microblogging/assets/style.dart';
 import 'package:provider/provider.dart';
@@ -29,6 +30,11 @@ class MyApp extends StatelessWidget {
               Theme.of(context).textTheme,
             ),
           ),
+          localizationsDelegates: [
+            GlobalMaterialLocalizations.delegate,
+            GlobalWidgetsLocalizations.delegate
+          ],
+          supportedLocales: [const Locale('pt', 'BR')],
         ));
   }
 }

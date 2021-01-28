@@ -4,9 +4,9 @@ import 'package:intl/intl.dart';
 import '../../../../assets/style.dart';
 import '../../../../models/post.dart';
 
-class PostCardTextBottonPart extends StatelessWidget {
+class PostCardTextBottonPart3 extends StatelessWidget {
   final Post post;
-  const PostCardTextBottonPart(
+  const PostCardTextBottonPart3(
     this.post,
   );
   @override
@@ -22,24 +22,16 @@ class PostCardTextBottonPart extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Container(
-            child: Text(
-              post.who,
-              style: Style.cardTitle,
-              maxLines: 1,
-            ),
-          ),
-          Container(
-            margin: EdgeInsets.only(top: 5),
-            child: Text(
-              post.text,
-              style: Style.cardText,
-            ),
-          ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Container(),
+              Container(
+                child: Text(
+                  post.who,
+                  style: Style.cardTitle,
+                  maxLines: 1,
+                ),
+              ),
               Container(
                 child: Text(
                   DateFormat("d 'de' MMMM 'de' y", "pt_BR")
@@ -50,6 +42,13 @@ class PostCardTextBottonPart extends StatelessWidget {
                 ),
               ),
             ],
+          ),
+          Container(
+            margin: EdgeInsets.only(top: 5),
+            child: Text(
+              post.text,
+              style: Style.cardText,
+            ),
           ),
         ],
       ),

@@ -1,15 +1,13 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
-import 'package:microblogging/modules/list_of_posts/widget/imput_text_count_down.dart';
 import 'package:provider/provider.dart';
 
 import '../../assets/style.dart';
 import '../../functions/functions.dart';
 import '../../widgets/button.dart';
 import 'list_of_posts_controller.dart';
+import 'widget/app_bar_page_edit_create/app_bar_edit_create.dart';
 import 'widget/camera_widget/image_widget.dart';
-import 'widget/page_edit_delete_post_on_edit.dart';
+import 'widget/imput_text_count_down.dart';
 import 'widget/page_imput_field_post_text.dart';
 
 class EditCreatePostPage extends StatelessWidget {
@@ -17,10 +15,9 @@ class EditCreatePostPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final double totalSizeOfAllWidgets = 710;
+    final double totalSizeOfAllWidgets = 730;
     ListOfPostsController controllerListOfPost =
         Provider.of<ListOfPostsController>(context, listen: false);
-    log(flexHeightSpacing(context, 1).toString());
     return Scaffold(
       body: SingleChildScrollView(
         child: Container(
@@ -32,7 +29,7 @@ class EditCreatePostPage extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              DeletePostOnEdit(),
+              AppBarEditCreate(),
               ImageWidget(),
               Container(height: 60),
               Container(
