@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:microblogging/assets/style.dart';
+
+import '../assets/style.dart';
 
 class DialogWarn extends StatelessWidget {
   final String text;

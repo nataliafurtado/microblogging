@@ -37,9 +37,7 @@ class LoginPage extends StatelessWidget {
               Container(height: 35),
               LoginButtons(_formKey),
               LoginNewUser(),
-              Container(
-                height: 50,
-              ),
+              Container(height: 50),
               loginButton(loginController, context),
               Container(height: 60),
               LoginDevelopedBy(),

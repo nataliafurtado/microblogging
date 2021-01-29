@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:microblogging/modules/login/login_controller.dart';
 import 'package:provider/provider.dart';
 
+import '../login_controller.dart';
 import '../teddy/teddy_controller.dart';
 import '../teddy/widgets/tracking_text_input.dart';
 

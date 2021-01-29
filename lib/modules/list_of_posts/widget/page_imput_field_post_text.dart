@@ -22,7 +22,6 @@ class ImputFieldPosText extends StatelessWidget {
           maxLines: 7,
           decoration: Style.inputDecoration(),
           onChanged: (text) {
-            print("message");
             Provider.of<ListOfPostsController>(context, listen: false)
                 .loadcountDown(text);
           },

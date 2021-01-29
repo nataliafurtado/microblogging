@@ -44,7 +44,7 @@ class EditCreatePostPage extends StatelessWidget {
                 controllerListOfPost.controllerText,
               ),
               ImputTextCountDown(),
-              Container(height: 60),
+              Container(height: 50),
               Button("Salvar", () {
                 if (_formKey.currentState.validate()) {
                   controllerListOfPost.saveEditPost();

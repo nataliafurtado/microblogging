@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
 
 import '../../assets/constants.dart';
-import '../../assets/style.dart';
 import '../../functions/functions.dart';
 import '../../widgets/button.dart';
+import '../../widgets/imput_text_field_widget.dart';
 import '../../widgets/title_widget.dart';
 import '../list_of_posts/widget/app_bar_page_edit_create/arrow_left_widget.dart';
 import 'login_controller.dart';
+import 'widgets/login_microblog_icon.dart';
 
 class LoginNewUserPage extends StatelessWidget {
   final _formKey = GlobalKey<FormState>();
@@ -33,27 +33,19 @@ class LoginNewUserPage extends StatelessWidget {
                   alignment: Alignment.centerLeft,
                   child: ArrowLeftWidget(),
                 ),
-                TitleWidget(
-                  "Novo Usuário",
-                ),
+                TitleWidget("Novo Usuário"),
                 Container(
                   height: calculateBottonButtonsBottonDistance(
                       context, totalSizeOfAllWidgets),
                   alignment: Alignment.center,
-                  child: Container(
-                    child: FaIcon(
-                      FontAwesomeIcons.microblog,
-                      color: Style.secondaryColor,
-                      size: 120,
-                    ),
-                  ),
+                  child: LoginMicroblogIcon(),
                 ),
                 Container(height: 100),
-                TextFormField(
-                  key: Key("imput-text-new-user-name"),
+                ImputTextFieldWidget(
+                  keyPassed: Key("imput-text-new-user-name"),
                   controller: controlleLogin.newNameController,
-                  decoration: Style.inputDecoration(
-                      hint: "Digite seu nome", label: "Nome"),
+                  hint: "Digite seu nome",
+                  label: "Nome",
                   validator: (String text) {
                     if (text.trim().isEmpty) {
                       return "Campo não pode ser vazio";
@@ -62,11 +54,11 @@ class LoginNewUserPage extends StatelessWidget {
                   },
                 ),
                 Container(height: 30),
-                TextFormField(
-                  key: Key("imput-text-new-user-login"),
+                ImputTextFieldWidget(
+                  keyPassed: Key("imput-text-new-user-login"),
                   controller: controlleLogin.newLoginController,
-                  decoration: Style.inputDecoration(
-                      hint: "Digite um novo login", label: "Login"),
+                  hint: "Digite um novo login",
+                  label: "Login",
                   validator: (String text) {
                     if (text.trim().isEmpty) {
                       return "Campo não pode ser vazio";
@@ -75,12 +67,12 @@ class LoginNewUserPage extends StatelessWidget {
                   },
                 ),
                 Container(height: 30),
-                TextFormField(
-                  key: Key("imput-text-new-user-password"),
-                  obscureText: true,
+                ImputTextFieldWidget(
+                  keyPassed: Key("imput-text-new-user-password"),
                   controller: controlleLogin.newPasswordController,
-                  decoration: Style.inputDecoration(
-                      hint: "Digite uma nova senha", label: "Senha"),
+                  hint: "Digite uma nova senha",
+                  obscureText: true,
+                  label: "Senha",
                   validator: (String text) {
                     if (text.trim().isEmpty) {
                       return "Campo não pode ser vazio";

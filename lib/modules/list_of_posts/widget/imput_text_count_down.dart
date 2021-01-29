@@ -12,7 +12,7 @@ class ImputTextCountDown extends StatelessWidget {
       return Container(
         width: double.infinity,
         alignment: Alignment.centerRight,
-        margin: EdgeInsets.only(right: 5),
+        margin: EdgeInsets.only(right: 8, top: 5),
         child: Text(
           Provider.of<ListOfPostsController>(context, listen: false)
               .countDown

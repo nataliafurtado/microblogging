@@ -1,13 +1,13 @@
 [
     {
         "who": "Natalia Furtado",
-        "date": "2020-02-02T16:00:00Z",
+        "date": "2020-01-01T16:00:00Z",
         "text": "Partiu academia !",
         "image": "lib/assets/images/selfie.jpg"
     },
     {
         "who": "Renata Morais",
-        "date": "2020-02-02T16:00:00Z",
+        "date": "2020-02-02T16:30:00Z",
         "text": "Alguem tem barraca para emprestar ?",
         "image": "lib/assets/images/airplane.png"
     },
@@ -19,7 +19,7 @@
     },
     {
         "who": "Gieri Almeida",
-        "date": "2020-02-02T16:00:00Z",
+        "date": "2020-02-04T16:00:00Z",
         "text": "Black Trans Lives Matters",
         "image": "lib/assets/images/black_lives.jpg"
     }

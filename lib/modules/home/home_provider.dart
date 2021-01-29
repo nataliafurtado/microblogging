@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:microblogging/modules/home/home_controller.dart';
-import 'package:microblogging/modules/latest_news/latest_news.controller.dart';
 import 'package:provider/provider.dart';
 
+import '../latest_news/latest_news.controller.dart';
 import '../list_of_posts/list_of_posts_controller.dart';
+import 'home_controller.dart';
 import 'home_page.dart';
 
 class HomeProvider extends StatelessWidget {

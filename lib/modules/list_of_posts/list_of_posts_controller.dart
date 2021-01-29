@@ -41,7 +41,10 @@ abstract class ListOfPostsControllerBase with Store, ChangeNotifier {
   @action
   fetchPosts() async {
     if (posts.isEmpty) {
-      posts = await _listOfPostRepository.fetchLatestNews();
+      List<Post> postsList = await _listOfPostRepository.fetchListOsPosts();
+      postsList.sort((Post a, Post b) =>
+          DateTime.parse(a.date).compareTo(DateTime.parse(a.date)));
+      posts = postsList;
     }
   }
 
@@ -81,13 +84,17 @@ abstract class ListOfPostsControllerBase with Store, ChangeNotifier {
   }
 
   saveNewPost() async {
-    posts.add(Post(
+    List<Post> postsList = posts;
+    postsList.add(Post(
       date: data,
       text: controllerText.text,
       who: Provider.of<GlobalAccess>(context, listen: false).user.name,
       imageString: imageString ?? "",
       imageFile: imageFile,
     ));
+    postsList.sort((Post a, Post b) =>
+        DateTime.parse(a.date).compareTo(DateTime.parse(a.date)));
+    posts = postsList;
   }
 
   @action
@@ -140,7 +147,6 @@ abstract class ListOfPostsControllerBase with Store, ChangeNotifier {
 
   @action
   loadcountDown(String textPassed) {
-    print(textPassed);
     countDown = 280 - textPassed.length;
   }
 
