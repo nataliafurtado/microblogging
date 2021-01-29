@@ -118,12 +118,20 @@ mixin _$ListOfPostsController on ListOfPostsControllerBase, Store {
         .run(() => super.goToEditPostPage(index));
   }
 
-  final _$saveEditPostAsyncAction =
-      AsyncAction('ListOfPostsControllerBase.saveEditPost');
+  final _$saveOrEditPostAsyncAction =
+      AsyncAction('ListOfPostsControllerBase.saveOrEditPost');
 
   @override
-  Future saveEditPost() {
-    return _$saveEditPostAsyncAction.run(() => super.saveEditPost());
+  Future saveOrEditPost() {
+    return _$saveOrEditPostAsyncAction.run(() => super.saveOrEditPost());
+  }
+
+  final _$saveNewPostAsyncAction =
+      AsyncAction('ListOfPostsControllerBase.saveNewPost');
+
+  @override
+  Future saveNewPost() {
+    return _$saveNewPostAsyncAction.run(() => super.saveNewPost());
   }
 
   final _$imgFromCameraAsyncAction =

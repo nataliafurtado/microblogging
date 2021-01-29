@@ -1,5 +1,3 @@
-import 'package:microblogging/modules/list_of_posts/widget/post_card_widget3/post_card_widget3.dart';
-
 class Constants {
   static final cardImageSizes = 80.0;
   static final microblogging = "microblogging";

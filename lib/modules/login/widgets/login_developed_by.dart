@@ -21,7 +21,7 @@ class LoginDevelopedBy extends StatelessWidget {
           Container(width: 3),
           FaIcon(
             FontAwesomeIcons.transgenderAlt,
-            color: Style.detailDarkColor,
+            color: Style.detailDarkColor.withOpacity(0.5),
             size: 12,
           ),
         ],

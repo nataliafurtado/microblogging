@@ -1,8 +1,11 @@
+import 'dart:developer';
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:microblogging/assets/constants.dart';
+import 'package:microblogging/assets/style.dart';
 import 'package:mobx/mobx.dart';
 import 'package:provider/provider.dart';
 
@@ -71,18 +74,16 @@ abstract class ListOfPostsControllerBase with Store, ChangeNotifier {
   }
 
   @action
-  saveEditPost() async {
+  saveOrEditPost() async {
     isLoadingImage = false;
     if (indexToEdit != null) {
-      posts[indexToEdit].text = controllerText.text;
-      posts[indexToEdit].imageString = imageString ?? "";
-      posts[indexToEdit].imageFile = imageFile;
+      saveEditPost();
     } else {
       await saveNewPost();
     }
-    Navigator.pop(context);
   }
 
+  @action
   saveNewPost() async {
     List<Post> postsList = posts;
     postsList.add(Post(
@@ -95,6 +96,30 @@ abstract class ListOfPostsControllerBase with Store, ChangeNotifier {
     postsList.sort((Post a, Post b) =>
         DateTime.parse(a.date).compareTo(DateTime.parse(a.date)));
     posts = postsList;
+    Navigator.pop(context);
+    Fluttertoast.showToast(
+        msg: "Post criado com sucesso",
+        toastLength: Toast.LENGTH_SHORT,
+        gravity: ToastGravity.CENTER,
+        timeInSecForIosWeb: 1,
+        backgroundColor: Style.primaryColor,
+        textColor: Colors.white,
+        fontSize: 16.0);
+  }
+
+  saveEditPost() {
+    posts[indexToEdit].text = controllerText.text;
+    posts[indexToEdit].imageString = imageString ?? "";
+    posts[indexToEdit].imageFile = imageFile;
+    Navigator.pop(context);
+    Fluttertoast.showToast(
+        msg: "Post Editado com sucesso",
+        toastLength: Toast.LENGTH_SHORT,
+        gravity: ToastGravity.CENTER,
+        timeInSecForIosWeb: 1,
+        backgroundColor: Style.primaryColor,
+        textColor: Colors.white,
+        fontSize: 16.0);
   }
 
   @action

@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:microblogging/assets/constants.dart';
-import 'package:microblogging/assets/style.dart';
-import 'package:microblogging/functions/functions.dart';
-import 'package:microblogging/modules/login/login_controller.dart';
 import 'package:provider/provider.dart';
+
+import '../../../assets/constants.dart';
+import '../../../assets/style.dart';
+import '../../../functions/functions.dart';
+import '../login_controller.dart';
 
 class LoginNewUser extends StatelessWidget {
   @override
@@ -21,6 +22,7 @@ class LoginNewUser extends StatelessWidget {
               .goToNewUSerPage();
         },
         child: Container(
+          height: 25,
           key: Key("button-new-user"),
           child: Row(
             mainAxisSize: MainAxisSize.min,

@@ -13,6 +13,8 @@ class ImputFieldPosText extends StatelessWidget {
   );
   @override
   Widget build(BuildContext context) {
+    ListOfPostsController controllerListOfPosts =
+        Provider.of<ListOfPostsController>(context, listen: false);
     return Container(
       height: 180,
       child: Form(
@@ -22,8 +24,7 @@ class ImputFieldPosText extends StatelessWidget {
           maxLines: 7,
           decoration: Style.inputDecoration(),
           onChanged: (text) {
-            Provider.of<ListOfPostsController>(context, listen: false)
-                .loadcountDown(text);
+            controllerListOfPosts.loadcountDown(text);
           },
           validator: (String text) {
             if (text.trim().isEmpty) {

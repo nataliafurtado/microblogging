@@ -49,8 +49,10 @@ class LoginNewUserPage extends StatelessWidget {
                   validator: (String text) {
                     if (text.trim().isEmpty) {
                       return "Campo não pode ser vazio";
-                    }
-                    return null;
+                    } else if (text.length <= 5) {
+                      return "É necessário no mínimo 5 caracteres";
+                    } else if (!text.contains(" ")) {}
+                    return "É necessário no mínimo dois nomes";
                   },
                 ),
                 Container(height: 30),
@@ -62,6 +64,8 @@ class LoginNewUserPage extends StatelessWidget {
                   validator: (String text) {
                     if (text.trim().isEmpty) {
                       return "Campo não pode ser vazio";
+                    } else if (text.length <= 5) {
+                      return "É necessário no mínimo 5 caracteres";
                     }
                     return null;
                   },

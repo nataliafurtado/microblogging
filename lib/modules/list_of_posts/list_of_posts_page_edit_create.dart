@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:provider/provider.dart';
 
 import '../../assets/style.dart';
@@ -19,42 +20,46 @@ class EditCreatePostPage extends StatelessWidget {
     ListOfPostsController controllerListOfPost =
         Provider.of<ListOfPostsController>(context, listen: false);
     return Scaffold(
-      body: SingleChildScrollView(
-        child: Container(
-          padding: EdgeInsets.symmetric(horizontal: 24),
-          height: flexHeightSpacing(context, 1) < totalSizeOfAllWidgets
-              ? totalSizeOfAllWidgets
-              : flexHeightSpacing(context, 1),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              AppBarEditCreate(),
-              ImageWidget(),
-              Container(height: 60),
-              Container(
-                padding: EdgeInsets.all(10),
-                child: Text(
-                  "Texto do post:",
-                  style: Style.formSubTitle,
-                ),
+      body: Observer(builder: (_) {
+        {
+          return SingleChildScrollView(
+            child: Container(
+              padding: EdgeInsets.symmetric(horizontal: 24),
+              height: flexHeightSpacing(context, 1) < totalSizeOfAllWidgets
+                  ? totalSizeOfAllWidgets
+                  : flexHeightSpacing(context, 1),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  AppBarEditCreate(),
+                  ImageWidget(),
+                  Container(height: 60),
+                  Container(
+                    padding: EdgeInsets.all(10),
+                    child: Text(
+                      "Texto do post:",
+                      style: Style.formSubTitle,
+                    ),
+                  ),
+                  ImputFieldPosText(
+                    _formKey,
+                    controllerListOfPost.controllerText,
+                  ),
+                  ImputTextCountDown(),
+                  Container(height: 50),
+                  Button("Salvar", () {
+                    if (_formKey.currentState.validate()) {
+                      controllerListOfPost.saveOrEditPost();
+                    }
+                  }),
+                  Container(height: 40),
+                ],
               ),
-              ImputFieldPosText(
-                _formKey,
-                controllerListOfPost.controllerText,
-              ),
-              ImputTextCountDown(),
-              Container(height: 50),
-              Button("Salvar", () {
-                if (_formKey.currentState.validate()) {
-                  controllerListOfPost.saveEditPost();
-                }
-              }),
-              Container(height: 40),
-            ],
-          ),
-        ),
-      ),
+            ),
+          );
+        }
+      }),
     );
   }
 }

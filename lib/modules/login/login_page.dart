@@ -39,7 +39,7 @@ class LoginPage extends StatelessWidget {
               LoginNewUser(),
               Container(height: 50),
               loginButton(loginController, context),
-              Container(height: 60),
+              Container(height: 50),
               LoginDevelopedBy(),
               Container(height: 20),
             ],
@@ -60,6 +60,7 @@ class LoginPage extends StatelessWidget {
         "Entrar",
         () async {
           if (_formKey.currentState.validate()) {
+            controllerTedyy.coverEyes(false);
             controllerTedyy.succes();
             await Future.delayed(Duration(seconds: 1));
             loginController.login(
