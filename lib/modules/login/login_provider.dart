@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:microblogging/modules/login/teddy/teddy_controller.dart';
 import 'package:provider/provider.dart';
 
 import 'login_controller.dart';
 import 'login_page.dart';
+import 'teddy/teddy_controller.dart';
 
 class LoginProvider extends StatelessWidget {
   @override

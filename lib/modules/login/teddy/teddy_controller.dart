@@ -1,3 +1,4 @@
+import 'dart:developer';
 import 'dart:math';
 import 'dart:ui';
 
@@ -145,6 +146,7 @@ abstract class TeddyControllerBase extends FlareControls
   }
 
   void succes() {
+    print("swsw");
     play("success");
   }
 

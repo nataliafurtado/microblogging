@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:intl/intl.dart';
+import 'package:microblogging/assets/style.dart';
 
 import '../services/navigator_sergice.dart';
 
@@ -40,4 +42,15 @@ double calculateLandingPageListHeight(context, totalSizeOfAllWidgets) {
   } else {
     return MediaQuery.of(context).size.height - totalSizeOfAllWidgets;
   }
+}
+
+showToast(String text) {
+  Fluttertoast.showToast(
+      msg: text,
+      toastLength: Toast.LENGTH_SHORT,
+      gravity: ToastGravity.CENTER,
+      timeInSecForIosWeb: 1,
+      backgroundColor: Style.primaryColor,
+      textColor: Colors.white,
+      fontSize: 16.0);
 }

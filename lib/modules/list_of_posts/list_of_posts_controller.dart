@@ -6,6 +6,7 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:microblogging/assets/constants.dart';
 import 'package:microblogging/assets/style.dart';
+import 'package:microblogging/functions/functions.dart';
 import 'package:mobx/mobx.dart';
 import 'package:provider/provider.dart';
 
@@ -48,7 +49,13 @@ abstract class ListOfPostsControllerBase with Store, ChangeNotifier {
       postsList.sort((Post a, Post b) =>
           DateTime.parse(a.date).compareTo(DateTime.parse(a.date)));
       posts = postsList;
+      showdDismissibleWarn();
     }
+  }
+
+  showdDismissibleWarn() async {
+    Future.delayed(Duration(seconds: 1));
+    showToast("Arraste para o lado para excluir");
   }
 
   @action
@@ -58,7 +65,7 @@ abstract class ListOfPostsControllerBase with Store, ChangeNotifier {
     imageString = posts[index].imageString;
     isLoadingImage = false;
     indexToEdit = index;
-    coutTextLenght();
+    countTextLenght();
     Navigator.pushNamed(context, '/edit-create-post', arguments: this);
   }
 
@@ -69,7 +76,7 @@ abstract class ListOfPostsControllerBase with Store, ChangeNotifier {
     imageFile = null;
     isLoadingImage = false;
     controllerText.text = "";
-    coutTextLenght();
+    countTextLenght();
     Navigator.pushNamed(context, '/edit-create-post', arguments: this);
   }
 
@@ -97,14 +104,7 @@ abstract class ListOfPostsControllerBase with Store, ChangeNotifier {
         DateTime.parse(a.date).compareTo(DateTime.parse(a.date)));
     posts = postsList;
     Navigator.pop(context);
-    Fluttertoast.showToast(
-        msg: "Post criado com sucesso",
-        toastLength: Toast.LENGTH_SHORT,
-        gravity: ToastGravity.CENTER,
-        timeInSecForIosWeb: 1,
-        backgroundColor: Style.primaryColor,
-        textColor: Colors.white,
-        fontSize: 16.0);
+    showToast("Post criado com sucesso");
   }
 
   saveEditPost() {
@@ -112,14 +112,7 @@ abstract class ListOfPostsControllerBase with Store, ChangeNotifier {
     posts[indexToEdit].imageString = imageString ?? "";
     posts[indexToEdit].imageFile = imageFile;
     Navigator.pop(context);
-    Fluttertoast.showToast(
-        msg: "Post Editado com sucesso",
-        toastLength: Toast.LENGTH_SHORT,
-        gravity: ToastGravity.CENTER,
-        timeInSecForIosWeb: 1,
-        backgroundColor: Style.primaryColor,
-        textColor: Colors.white,
-        fontSize: 16.0);
+    showToast("Post Editado com sucesso");
   }
 
   @action
@@ -166,7 +159,7 @@ abstract class ListOfPostsControllerBase with Store, ChangeNotifier {
     Navigator.pop(indexPassed);
   }
 
-  coutTextLenght() {
+  countTextLenght() {
     loadcountDown(controllerText.text);
   }
 
@@ -183,5 +176,6 @@ abstract class ListOfPostsControllerBase with Store, ChangeNotifier {
       postCardOption = Constants.postCard2;
 
     Navigator.pop(context);
+    showToast("Trocado modelo do card");
   }
 }

@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:fluttertoast/fluttertoast.dart';
+import 'package:microblogging/modules/login/teddy/teddy_controller.dart';
 import 'package:mobx/mobx.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../assets/constants.dart';
-import '../../assets/style.dart';
 import '../../functions/functions.dart';
 import '../../global_acess.dart';
 import '../../models/user.dart';
@@ -36,19 +35,25 @@ abstract class LoginControllerBase with Store, ChangeNotifier {
 
   login(String login, String password) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
+    TeddyController controllerTedyy =
+        Provider.of<TeddyController>(context, listen: false);
+
     if (userExistsAndPassworIsCorrect(prefs, login, password)) {
       setLasUsedLogin(prefs, login);
       loadGlobalUser(prefs, login);
+      controllerTedyy.succes();
+      await Future.delayed(Duration(seconds: 1));
       Navigator.popAndPushNamed(context, '/home-page');
     } else {
+      controllerTedyy.fails();
+      await Future.delayed(Duration(seconds: 1));
       showCustomDialog(DialogWarn("Usuário ou senha inválida"));
     }
   }
 
   bool userExistsAndPassworIsCorrect(SharedPreferences prefs, login, senha) {
-    // return prefs.containsKey(login.trim()) &&
-    //     prefs.getStringList(login.trim())[0] == senha.trim();
-    return true;
+    return prefs.containsKey(login.trim()) &&
+        prefs.getStringList(login.trim())[0] == senha.trim();
   }
 
   setLasUsedLogin(SharedPreferences prefs, login) {
@@ -83,13 +88,6 @@ abstract class LoginControllerBase with Store, ChangeNotifier {
   }
 
   showToasUserRegistered() {
-    Fluttertoast.showToast(
-        msg: "Usuário cadastrado com sucesso",
-        toastLength: Toast.LENGTH_SHORT,
-        gravity: ToastGravity.CENTER,
-        timeInSecForIosWeb: 1,
-        backgroundColor: Style.primaryColor,
-        textColor: Colors.white,
-        fontSize: 16.0);
+    showToast("Usuário cadastrado com sucesso");
   }
 }

@@ -59,10 +59,8 @@ class LoginPage extends StatelessWidget {
       child: Button(
         "Entrar",
         () async {
+          controllerTedyy.coverEyes(false);
           if (_formKey.currentState.validate()) {
-            controllerTedyy.coverEyes(false);
-            controllerTedyy.succes();
-            await Future.delayed(Duration(seconds: 1));
             loginController.login(
               loginController.loginController.text,
               loginController.passwordController.text,
