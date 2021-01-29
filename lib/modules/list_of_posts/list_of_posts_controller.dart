@@ -1,15 +1,12 @@
-import 'dart:developer';
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:microblogging/assets/constants.dart';
-import 'package:microblogging/assets/style.dart';
-import 'package:microblogging/functions/functions.dart';
 import 'package:mobx/mobx.dart';
 import 'package:provider/provider.dart';
 
+import '../../assets/constants.dart';
+import '../../functions/functions.dart';
 import '../../global_acess.dart';
 import '../../models/post.dart';
 import 'list_of_posts_repository.dart';
