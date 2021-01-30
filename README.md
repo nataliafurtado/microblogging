@@ -1,6 +1,6 @@
 # microblogging
 
-Natália Parizzoto Furtado 
+Natália Parizotto Furtado 
 
 ## Getting Started
 
