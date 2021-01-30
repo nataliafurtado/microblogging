@@ -4,7 +4,7 @@ Natália Parizotto Furtado
 
 ## Getting Started
 
-- Desafio Boticario
+- Desafio Boticário
 
  - [X] Tela de splash screen com informações sobre você, fique à vontade pra
 apresentar seu nome, e-mail uma foto divertida sua. Mas se quiser só
