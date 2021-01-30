@@ -1,6 +1,6 @@
 # microblogging
 
-A new Flutter project.
+Natália Parizzoto Furtado 
 
 ## Getting Started
 
